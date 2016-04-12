@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scaleble=no" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/navbar-fixed-top.css")
+</head>
+<body>
+
+    @*导航栏：固定在页面最上方*@
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">店名</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="action"><a href="#首页">首页</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#contact">联系</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#吉他">吉他</a></li>
+                            <li><a href="#电吉他">电吉他</a></li>
+                            <li><a href="#乌克丽丽">乌克丽丽</a></li>
+                            <li role="separator" class="divider" ><a href="#"></a></li>
+                            <li><a href="#电子琴">电子琴</a></li>
+                            <li><a href="#古筝">古筝</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="register_modal" >注册</button></li>
+                    <li><button type="button" class="btn btn-default navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></li>
+                </ul>
+                
+
+            </div>
+        </div>
+    </nav>
+
+
+    @*登陆注册模态框*@
+    <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+                    <h4 class="modal-title" id="myModalLabel">登录到本商城</h4>
+                </div>
+                
+                <div class="modal-body form-group">
+                    <div>
+                        <label class="name">账号</label><input type="text" class="form-control"/>
+                    </div>
+                    <div>
+                        <label class="name">密码</label><input type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">让我再逛逛</button>
+                    <button type="button" class="btn btn-primary">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+
+
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+
+    </script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
