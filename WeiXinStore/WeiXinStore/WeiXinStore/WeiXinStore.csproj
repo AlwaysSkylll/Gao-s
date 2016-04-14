@@ -136,10 +136,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\cover.css" />
-    <Content Include="Content\navbar-fixed-top.css" />
+    <Content Include="Content\themes\base\images\cd-hamburger-menu.svg" />
+    <Content Include="Content\themes\base\images\cd-logo.svg" />
+    <Content Include="Content\themes\base\images\cd-remove-item.svg" />
     <Content Include="Content\themes\base\images\49knf36bw.jpg" />
+    <Content Include="Content\themes\base\images\cd-cart.svg" />
     <Content Include="Content\themes\base\images\cdfd226egw1ethr1iovaxj21hc0u0wq9.jpg" />
     <Content Include="Content\themes\base\images\cdfd226egw1euhlv3ehlcj21hc0u0dov.jpg" />
+    <Content Include="Content\themes\base\images\thumb_700.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -194,6 +198,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\cart.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Properties\Settings.settings">
@@ -202,6 +207,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\Store.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -215,7 +221,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
@@ -228,6 +236,7 @@
     <Content Include="Views\Test\Test.cshtml" />
     <Content Include="Views\Store\Cover.cshtml" />
     <Content Include="Views\Test\View1.cshtml" />
+    <Content Include="Views\Store\About.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

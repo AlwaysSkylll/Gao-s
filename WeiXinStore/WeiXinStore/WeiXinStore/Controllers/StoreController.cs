@@ -15,6 +15,10 @@ namespace WeiXinStore.Controllers
         {
             return View("Index");
         }
+        public ActionResult About()
+        {
+            return View("About");
+        }
         public ActionResult Cover()
         {
             return View("Cover");

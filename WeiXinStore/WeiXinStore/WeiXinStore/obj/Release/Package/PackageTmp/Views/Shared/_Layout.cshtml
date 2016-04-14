@@ -3,18 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scaleble=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/bootstrap.min.css")
     @Styles.Render("~/Content/style.css")
-    @Styles.Render("~/Content/navbar-fixed-top.css")
+    @Styles.Render("~/Content/cart.css")
 </head>
 <body>
 
     @*导航栏：固定在页面最上方*@
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -23,15 +21,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand">店名</a>
+                <a class="navbar-brand">店名</a>
+                <div id="cd-cart-trigger" class="navbar-right"><a href="#0"><img class="cd-img-replace" src="~/Content/themes/base/images/cd-cart.svg"/></a></div>
+                
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="action"><a href="#首页">首页</a></li>
-                    <li><a href="#about">关于</a></li>
-                    <li><a href="#contact">联系</a></li>
+            <div id="navbar" class="navbar-collapse collapse navbar-right">
+                <ul class="nav navbar-nav ">
+                    <li class="action"><a href="Index">商城</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热销<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#吉他">吉他</a></li>
                             <li><a href="#电吉他">电吉他</a></li>
@@ -41,33 +39,115 @@
                             <li><a href="#古筝">古筝</a></li>
                         </ul>
                     </li>
+                    <li class="dorpdown">
+                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://weibo.com/3147341217/profile" target="_blank">新浪微博</a></li>
+                            <li><a href="https://github.com/AlwaysSkylll/Gao-s/tree/master/WeiXinStore/WeiXinStore" target="_blank">GitHub</a></li>
+                            <li><a href="About">关于我们</a></li>                           
+                        </ul>
+                    </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="register_modal" >注册</button></li>
-                    <li><button type="button" class="btn btn-default navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></li>
-                </ul>
-                
-
+                <ul class="nav navbar-nav">
+                    <li><button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myRegister">注册</button></li>
+                    <li><button type="button" class="btn btn-primary navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></li>
+                </ul>   
             </div>
         </div>
     </nav>
 
+    @*购物车*@
+    <div id="cd-cart">
+		<h2>Cart</h2>
+		<ul class="cd-cart-items">
+			<li>
+				<span class="cd-qty">1x</span> Product Name
+				<div class="cd-price">$9.99</div>
+				<a href="#0" class="cd-item-remove cd-img-replace"><img src="~/Content/themes/base/images/cd-remove-item.svg"/>Remove</a>
+			</li>
+
+			<li>
+				<span class="cd-qty">2x</span> Product Name
+				<div class="cd-price">$19.98</div>
+				<a href="#0" class="cd-item-remove cd-img-replace"><img src="~/Content/themes/base/images/cd-remove-item.svg"/>Remove</a>
+			</li>
+
+			<li>
+				<span class="cd-qty">1x</span> Product Name
+				<div class="cd-price">$9.99</div>
+				<a href="#0" class="cd-item-remove cd-img-replace"><img src="~/Content/themes/base/images/cd-remove-item.svg"/>Remove</a>
+			</li>
+		</ul> <!-- cd-cart-items -->
+
+		<div class="cd-cart-total">
+			<p>Total <span>$39.96</span></p>
+		</div> <!-- cd-cart-total -->
+
+		<a href="#0" class="checkout-btn">Checkout</a>
+		
+		<p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+	</div> <!-- cd-cart -->
 
     @*登陆注册模态框*@
-    <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+    <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myLoginLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:300px">
+            <div class="modal-content" >
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
-                    <h4 class="modal-title" id="myModalLabel">登陆</h4>
+                    <h4 class="modal-title" id="myLoginLabel">登录</h4>
                 </div>
                 
                 <div class="modal-body">
-                    登陆表单
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="请输入手机号或邮箱"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="请输入密码"/>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value=""/>自动登陆（10天内有效）</label>
+                        </div>
+                        <a href="#">忘记密码？</a>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">登陆</button>
+                    <button type="button" class="btn btn-primary">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myRegister" tabindex="-1" role="dialog" aria-labelledby="myRegisterLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:300px">
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+                    <h4 class="modal-title" id="myRegisterLabel">快速注册</h4>
+                </div>
+                
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="email" placeholder="请输入邮箱号"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="请输入姓名"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" placeholder="请输入密码"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="请确认输入密码"/>
+                                <span class="input-group-btn" ><button type="button" class="btn btn-success">注册</button></span>
+                            </div>  
+                        </div>
+                        <div class="form-group"><input type="checkbox" value=""/>已经阅读<a href="#">相关条款</a></div> 
+                    </form>
+                </div>
+                <div class="modal-footer"> 
+                    <button type="button" class="btn btn-default" data-dismiss="modal">让我再逛逛</button>
                 </div>
             </div>
         </div>
@@ -75,18 +155,27 @@
 
 
 
+
+   
+
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-
+    @*页脚*@
+    <div class="container">
+        <footer>
+            <p class="pull-right"><a href="#">back to top</a></p>
+            <p>&copy; 2016 Gao's, Inc. &middot; <a href="#">Privacy</a>&middot; <a href="#">Terms</a></p>
+        </footer>
+    </div>
+    
 
 
     <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script>
-
-    </script>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/modernizr.js"></script>
     @RenderSection("scripts", required: false)
 
 </body>
 </html>
+

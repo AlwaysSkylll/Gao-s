@@ -1,28 +1,27 @@
 ﻿@{
     ViewBag.Title = "欢迎光临";
-    Layout = "";
+    Layout = null;
 }
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scaleble=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/bootstrap.min.css")
-    @Styles.Render("~/Content/style.css")
     @Styles.Render("~/Content/cover.css")
 </head>
-<body>
-    <div class="site-wrapper">
-        <div class="site-wrapper-inner">
-            <div class="cover-container">
+<body >
+    <div class="site-wrapper" >
+        <div class="site-wrapper-inner" >
+            <div class="cover-container" >
                 <div class="masthead clearfix">
-                    <div class="inner"> 
+                    <div class="inner" > 
                         <nav>
                             <ul class="nav masthead-nav">
-                                <li><a href="#">关于</a></li>
-                                <li><a href="#">联系我</a></li>
+                                <li><a href="Store/About">关于</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -31,17 +30,17 @@
                 <div class="inner cover">
  
 
-                    <h1 class="cover-heading">你好音乐</h1>
+                    <h1 class="cover-heading" style="margin-bottom:2em;">你好音乐</h1>
                     <p class="lead"><a href="Store/Index" class="btn btn-lg btn-default">让我先看看</a></p>
                 </div>
-               @* <div class="mastfoot">
-                    <div class="inner">
-                        <p>cover template for <a href="#">bootstrap</a>,by<a href="#"> Gao's</a></p>
-                    </div>
-                </div>*@
             </div>
         </div>
+      
     </div>
-
+    @*<footer class="footer">
+        <div class="container">
+            <p class="text-muted">cover template for <a href="#">bootstrap</a>,by<a href="#"> Gao's</a></p>
+        </div>
+    </footer>*@
 </body>
 </html>

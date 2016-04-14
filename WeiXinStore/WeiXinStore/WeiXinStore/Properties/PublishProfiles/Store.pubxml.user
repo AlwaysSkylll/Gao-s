@@ -47,7 +47,7 @@
       <publishTime>04/07/2016 21:23:15</publishTime>
     </File>
     <File Include="bin/WeiXinStore.dll">
-      <publishTime>04/12/2016 18:02:42</publishTime>
+      <publishTime>04/14/2016 00:22:30</publishTime>
     </File>
     <File Include="bin/zh-Hans/EntityFramework.resources.dll">
       <publishTime>04/07/2016 21:23:17</publishTime>
@@ -76,6 +76,9 @@
     <File Include="Content/bootstrap.min.css">
       <publishTime>04/07/2016 22:10:18</publishTime>
     </File>
+    <File Include="Content/cart.css">
+      <publishTime>04/14/2016 00:13:15</publishTime>
+    </File>
     <File Include="Content/cover.css">
       <publishTime>04/08/2016 19:35:46</publishTime>
     </File>
@@ -86,16 +89,31 @@
       <publishTime>04/07/2016 21:23:00</publishTime>
     </File>
     <File Include="Content/style.css">
-      <publishTime>04/12/2016 17:39:01</publishTime>
+      <publishTime>04/13/2016 23:57:38</publishTime>
     </File>
     <File Include="Content/themes/base/images/49knf36bw.jpg">
-      <publishTime>04/08/2016 19:19:15</publishTime>
+      <publishTime>04/13/2016 00:21:56</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/cd-cart.svg">
+      <publishTime>04/13/2016 23:08:25</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/cd-hamburger-menu.svg">
+      <publishTime>04/13/2016 23:59:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/cd-logo.svg">
+      <publishTime>04/13/2016 23:59:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/cd-remove-item.svg">
+      <publishTime>04/13/2016 23:59:02</publishTime>
     </File>
     <File Include="Content/themes/base/images/cdfd226egw1ethr1iovaxj21hc0u0wq9.jpg">
-      <publishTime>04/12/2016 16:41:12</publishTime>
+      <publishTime>04/13/2016 00:26:30</publishTime>
     </File>
     <File Include="Content/themes/base/images/cdfd226egw1euhlv3ehlcj21hc0u0dov.jpg">
-      <publishTime>04/12/2016 16:48:33</publishTime>
+      <publishTime>04/13/2016 00:28:11</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/thumb_700.jpg">
+      <publishTime>04/13/2016 22:20:49</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>04/07/2016 21:23:11</publishTime>
@@ -271,6 +289,9 @@
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>04/07/2016 22:48:41</publishTime>
     </File>
+    <File Include="Scripts/holder.min.js">
+      <publishTime>04/12/2016 22:50:21</publishTime>
+    </File>
     <File Include="Scripts/jquery-1.7.1.js">
       <publishTime>04/07/2016 21:23:10</publishTime>
     </File>
@@ -310,8 +331,14 @@
     <File Include="Scripts/knockout-2.1.0.js">
       <publishTime>04/07/2016 21:23:15</publishTime>
     </File>
+    <File Include="Scripts/main.js">
+      <publishTime>04/13/2016 23:56:05</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.5.3.js">
       <publishTime>04/07/2016 21:23:12</publishTime>
+    </File>
+    <File Include="Scripts/modernizr.js">
+      <publishTime>04/13/2016 23:56:05</publishTime>
     </File>
     <File Include="Scripts/_references.js">
       <publishTime>04/07/2016 21:23:10</publishTime>
@@ -320,13 +347,19 @@
       <publishTime>04/07/2016 21:23:00</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/12/2016 19:44:24</publishTime>
+      <publishTime>04/14/2016 00:15:00</publishTime>
+    </File>
+    <File Include="Views/Store/About.cshtml">
+      <publishTime>04/13/2016 23:38:39</publishTime>
     </File>
     <File Include="Views/Store/Cover.cshtml">
-      <publishTime>04/12/2016 16:20:44</publishTime>
+      <publishTime>04/13/2016 21:56:36</publishTime>
     </File>
     <File Include="Views/Store/Index.cshtml">
-      <publishTime>04/12/2016 19:40:45</publishTime>
+      <publishTime>04/14/2016 00:03:24</publishTime>
+    </File>
+    <File Include="Views/Store/Register.cshtml">
+      <publishTime>04/13/2016 00:10:34</publishTime>
     </File>
     <File Include="Views/Test/Test.cshtml">
       <publishTime>04/07/2016 21:50:13</publishTime>
@@ -335,13 +368,13 @@
       <publishTime>04/08/2016 00:47:30</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>04/12/2016 19:45:10</publishTime>
+      <publishTime>04/14/2016 00:22:33</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>04/07/2016 21:23:00</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>04/12/2016 19:45:10</publishTime>
+      <publishTime>04/14/2016 00:22:33</publishTime>
     </File>
   </ItemGroup>
 </Project>
