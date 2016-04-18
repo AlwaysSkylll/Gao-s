@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -123,27 +124,49 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\StoreController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DataAcessLayer\SalesERPDAL.cs" />
+    <Compile Include="DataAcessLayer\Store.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\employee.cs" />
+    <Compile Include="Models\EmployeeBussiness.cs" />
+    <Compile Include="Models\instrument.cs" />
+    <Compile Include="Models\StoreBussiness.cs" />
+    <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewsModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewsModels\InstrumentViewModel.cs" />
+    <Compile Include="ViewsModels\ListViewModel.cs" />
+    <Compile Include="ViewsModels\StoreViewModel.cs" />
+    <Compile Include="ViewsModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\cover.css" />
-    <Content Include="Content\themes\base\images\cd-hamburger-menu.svg" />
-    <Content Include="Content\themes\base\images\cd-logo.svg" />
-    <Content Include="Content\themes\base\images\cd-remove-item.svg" />
-    <Content Include="Content\themes\base\images\49knf36bw.jpg" />
-    <Content Include="Content\themes\base\images\cd-cart.svg" />
-    <Content Include="Content\themes\base\images\cdfd226egw1ethr1iovaxj21hc0u0wq9.jpg" />
-    <Content Include="Content\themes\base\images\cdfd226egw1euhlv3ehlcj21hc0u0dov.jpg" />
-    <Content Include="Content\themes\base\images\thumb_700.jpg" />
+    <Content Include="Content\images\cd-icon-arrow.svg" />
+    <Content Include="Content\images\logo.gif" />
+    <Content Include="Content\images\cd-icon-cart.svg" />
+    <Content Include="Content\images\cd-icon-settings.svg" />
+    <Content Include="Content\images\thumb-1.jpg" />
+    <Content Include="Content\images\thumb-2.jpg" />
+    <Content Include="Content\images\thumb-3.jpg" />
+    <Content Include="Content\styles\cover.css" />
+    <Content Include="Content\styles\reset.css" />
+    <Content Include="Content\styles\singleitem.css" />
+    <Content Include="Content\images\cd-hamburger-menu.svg" />
+    <Content Include="Content\images\cd-logo.svg" />
+    <Content Include="Content\images\cd-remove-item.svg" />
+    <Content Include="Content\images\49knf36bw.jpg" />
+    <Content Include="Content\images\cd-cart.svg" />
+    <Content Include="Content\images\cdfd226egw1ethr1iovaxj21hc0u0wq9.jpg" />
+    <Content Include="Content\images\cdfd226egw1euhlv3ehlcj21hc0u0dov.jpg" />
+    <Content Include="Content\images\thumb_700.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -198,9 +221,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Content\cart.css" />
+    <Content Include="Content\styles\cart.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\styles\Site.css" />
     <Content Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -208,6 +231,7 @@
     <None Include="Properties\PublishProfiles\Store.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\holder.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -221,21 +245,21 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
-    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\cart.js" />
+    <Content Include="Scripts\singleitem.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\styles\bootstrap.min.css" />
+    <Content Include="Content\styles\style.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Test\Test.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Store\Cover.cshtml" />
-    <Content Include="Views\Test\View1.cshtml" />
     <Content Include="Views\Store\About.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
@@ -254,10 +278,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

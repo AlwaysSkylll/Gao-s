@@ -1,82 +1,135 @@
-jQuery(document).ready(function($){
-	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
-	var $L = 1200,
-		$menu_navigation = $('#main-nav'),
-		$cart_trigger = $('#cd-cart-trigger'),
-		$hamburger_icon = $('#cd-hamburger-menu'),
-		$lateral_cart = $('#cd-cart'),
-		$shadow_layer = $('#cd-shadow-layer');
+﻿jQuery(document).ready(function ($) {
+    //导航标签当前样式
+    //var $index = $('#index');
+    //var $about = $('#about');
+    //var $contact = $('#contact');
+    //var $clear = $('#main-nav li a');
+    //$index.on('click', function (event) {
+    //    $clear.removeClass("current");
+    //    $index.addClass("current");
+    //});
+    //$about.on('click', function (event) {
+    //    $clear.removeClass("current");
+    //    $about.addClass("current");
+    //});
+    //$contact.on('click', function (event) {
+    //    $clear.removeClass("current");
+    //    $contact.addClass("current");
+    //});
 
-	//open lateral menu on mobile
-	$hamburger_icon.on('click', function(event){
-		event.preventDefault();
-		//close cart panel (if it's open)
-		$lateral_cart.removeClass('speed-in');
-		toggle_panel_visibility($menu_navigation, $shadow_layer, $('body'));
-	});
+    //注册表单验证
+    //$('#btnregister').on('click', function () {
+    //    $('#register').attr('disabled',true);
+    //});
+    var phone_erro = 1;
+    var name_erro = 1;
+    var pwd_erro = 1;
+    var rpwd_erro = 1;
+    var pwd_match = false;
+    //判断注册表单整体验证结果 
+    function result() {
+        if (phone_erro == 0 && name_erro == 0 && pwd_match == true)
+            return true;
+        else
+            return false;
+    };
 
-	//open cart
-	$cart_trigger.on('click', function(event){
-		event.preventDefault();
-		//close lateral menu (if it's open)
-		$menu_navigation.removeClass('speed-in');
-		toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
-	});
+    //手机号码数字限制
+    $('#rphone').keypress(function () {
+        var keyCode = event.keyCode;
+        if ((keyCode >= 48 && keyCode <= 57)) {
+            event.returnValue = true;
+        }
+        else {
+            event.returnValue = false;
+        }
+    });
 
-	//close lateral cart or lateral menu
-	$shadow_layer.on('click', function(){
-		$shadow_layer.removeClass('is-visible');
-		// firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
-		if( $lateral_cart.hasClass('speed-in') ) {
-			$lateral_cart.removeClass('speed-in').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-				$('body').removeClass('overflow-hidden');
-			});
-			$menu_navigation.removeClass('speed-in');
-		} else {
-			$menu_navigation.removeClass('speed-in').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-				$('body').removeClass('overflow-hidden');
-			});
-			$lateral_cart.removeClass('speed-in');
-		}
-	});
+    //注册表单验证规则
+        
+        //空项判断
+    function IsNull(obj) {
+        if (obj.val() == '' || $(this).val() == null) {
+            obj.next().remove();
+            obj.parent().append("<div class='alert alert-danger'>这是必填项</div>");
+        }
+    };
 
-	//move #main-navigation inside header on laptop
-	//insert #main-navigation after header on mobile
-	move_navigation( $menu_navigation, $L);
-	$(window).on('resize', function(){
-		move_navigation( $menu_navigation, $L);
-		
-		if( $(window).width() >= $L && $menu_navigation.hasClass('speed-in')) {
-			$menu_navigation.removeClass('speed-in');
-			$shadow_layer.removeClass('is-visible');
-			$('body').removeClass('overflow-hidden');
-		}
 
-	});
+    $('#rphone').on('blur', function () {
+        if (IsNull($(this))()) { }
+        else if ($(this).val().length <= 10 && $(this).val().length >= 1) {
+            $(this).next().remove();
+            $(this).parent().append("<div  class='alert alert-danger'>手机号码长度过短</div>");
+        }
+        else if ($(this).val().length == 11) {
+
+            $(this).next().remove();
+            phone_erro = 0;
+            $(this).parent().append("<div class='alert alert-success'>填写正确</div>");
+        }
+    });
+    $('#rname').on('blur', function () {
+        if (IsNull($(this))()) { }
+        else {
+            $(this).next().remove();
+            $(this).parent().append("<div name='error' class='alert alert-success'>填写正确</div>");
+            name_erro = 0;
+        }
+    });
+    
+    function pwd_compare() {
+        //两次密码检测
+        if ($('#rpwd').val() === $('#rrpwd').val() && pwd_erro == 0 && rpwd_erro == 0)
+            return true;
+        else {
+            $('#rrpwd').next().remove();
+            $('#rrpwd').parent().append("<div class='alert alert-danger'>两次密码不相同</div>");
+            return false;
+        }
+    };
+    $('#rpwd').on('blur', function () {
+        if (IsNull($(this))()) { }
+        else if ($(this).val().length >= 0 && $(this).val().length<6) {
+            $(this).next().remove();
+            $(this).parent().append("<div class='alert alert-danger'>密码长度不能小于6位</div>");
+        }
+        else {
+            $(this).next().remove();
+            $(this).parent().append("<div name='error' class='alert alert-success'>填写正确</div>");
+            pwd_erro = 0;
+            
+        }
+        pwd_match = pwd_compare();
+    });
+    $('#rrpwd').on('blur', function () {
+        if ($(this).val().length >= 1 && $(this).val().length < 6) {
+            $(this).next().remove();
+            $(this).parent().append("<div class='alert alert-danger'>两次密码不相同</div>");
+        }
+        else if ($(this).val()=='') { }
+        else {
+            $(this).next().remove();
+            $(this).parent().append("<div name='error' class='alert alert-success'>填写正确</div>");
+            rpwd_erro = 0;
+        }
+        pwd_match = pwd_compare();
+    });
+    //注册按钮触发表单提交
+    $('#register').on('click', function () {
+        $('#temp').focus();
+        if (result())
+        {
+            $('#register_form').submit();
+        }
+        IsNull($('#rphone'))();
+        alert("1");
+        IsNull($('#rname'))();
+        alert("2"); 
+        IsNull($('#rpwd'))();
+        alert("3");
+    });
+
+
+
 });
-
-function toggle_panel_visibility ($lateral_panel, $background_layer, $body) {
-	if( $lateral_panel.hasClass('speed-in') ) {
-		// firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
-		$lateral_panel.removeClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-			$body.removeClass('overflow-hidden');
-		});
-		$background_layer.removeClass('is-visible');
-
-	} else {
-		$lateral_panel.addClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-			$body.addClass('overflow-hidden');
-		});
-		$background_layer.addClass('is-visible');
-	}
-}
-
-function move_navigation( $navigation, $MQ) {
-	if ( $(window).width() >= $MQ ) {
-		$navigation.detach();
-		$navigation.appendTo('header');
-	} else {
-		$navigation.detach();
-		$navigation.insertAfter('header');
-	}
-}

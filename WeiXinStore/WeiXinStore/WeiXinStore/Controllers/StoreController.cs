@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WeiXinStore.ViewsModels;
+using WeiXinStore.Models;
+using WeiXinStore.DataAcessLayer;
 
 namespace WeiXinStore.Controllers
 {
@@ -13,6 +16,9 @@ namespace WeiXinStore.Controllers
 
         public ActionResult Index()
         {
+            StoreBussiness store = new StoreBussiness();
+            //store.GetInstrument();
+            //store.GetUser();
             return View("Index");
         }
         public ActionResult About()
@@ -23,6 +29,7 @@ namespace WeiXinStore.Controllers
         {
             return View("Cover");
         }
+
 
     }
 }
