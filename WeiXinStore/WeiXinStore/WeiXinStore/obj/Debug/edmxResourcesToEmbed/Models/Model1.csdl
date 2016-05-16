@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoreModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="StoreEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="instruments" EntityType="StoreModel.instruments" />
+    <EntitySet Name="Order" EntityType="StoreModel.Order" />
+    <EntitySet Name="shopcart" EntityType="StoreModel.shopcart" />
+    <EntitySet Name="users" EntityType="StoreModel.users" />
+  </EntityContainer>
+  <EntityType Name="instruments">
+    <Key>
+      <PropertyRef Name="InstrumentId" />
+    </Key>
+    <Property Name="InstrumentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="InstrumentNum" Type="Int32" Nullable="false" />
+    <Property Name="InstrumentName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="InstrumentDescribe" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Instrumentprice" Type="Double" />
+    <Property Name="Img1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Img2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Img3" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Img4" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Img5" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Img6" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ProductImg" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="OrderNum" Type="Int32" />
+    <Property Name="OrderPrice" Type="Double" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="shopcart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="None" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CartJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="CountNum" Type="Int32" />
+    <Property Name="CountPrice" Type="Double" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="Sex" Type="Int32" />
+    <Property Name="CartId" Type="Int32" />
+  </EntityType>
+</Schema>

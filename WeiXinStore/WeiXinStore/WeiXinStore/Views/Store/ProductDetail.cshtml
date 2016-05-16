@@ -1,0 +1,58 @@
+﻿@model WeiXinStore.Models.ProductListViewModel
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div><img id="Img" src="~/Content/images/thumb_700.jpg" /></div>
+    <h1 id="name">000</h1>
+    <h3 id="price">$000</h3>
+    <button type="button" class="btn btn-lg btn-warning btnBuy">立即购买</button>  
+    <button type="button" class="add-to-cart btn btn-lg btn-danger btnToCart">加入购物车</button>
+    <div id="details">
+        <h3>图文介绍</h3>
+        <img src="~/Content/images/thumb_700.jpg" />
+        <img src="~/Content/images/thumb_700.jpg" />
+        <img src="~/Content/images/thumb_700.jpg" />
+        <img src="~/Content/images/thumb_700.jpg" />
+        <img src="~/Content/images/thumb_700.jpg" />
+        <img src="~/Content/images/thumb_700.jpg" />
+    </div>
+</div>
+<script src="~/Scripts/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#Img').attr('width', '100%');
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        var itemId = getUrlParam("id");
+        var $details = $('#details img');
+        $.ajax({
+            url: "/Product/GetProduct",
+            type: "POST",
+            data: {
+                "itemId": itemId
+            },
+            success: function (data) {
+                if (data == "0") {
+                    alert("十分抱歉，该商品已售罄");
+                }
+                else {
+                    $('#name').text(data.InstrumentName);
+                    $('#price').text('$' + data.Instrumentprice);
+                    $('#Img').attr('src', data.ProductImg);
+                    $details.eq(0).attr('src', data.Img1);
+                    $details.eq(1).attr('src', data.Img2);
+                    $details.eq(2).attr('src', data.Img3);
+                    $details.eq(3).attr('src', data.Img4);
+                    $details.eq(4).attr('src', data.Img5);
+                    $details.eq(5).attr('src', data.Img6);
+                }
+            }
+        })
+    })
+</script>

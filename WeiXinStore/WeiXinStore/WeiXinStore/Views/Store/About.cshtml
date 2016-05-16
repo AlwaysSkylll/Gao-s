@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WeiXinStore.Models.ProductListViewModel
+@{
     ViewBag.Title = "关于我们";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -75,8 +76,14 @@
     </div>
     <hr class="featurette-divider">
 
-    
 </div>
 
-
-
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script>
+    if ($('#index').hasClass("current"))
+        $(this).removeClass("current");
+    if ($('#contact').hasClass("current"))
+        $(this).removeClass("current");
+    $('#about').addClass("current");
+</script>

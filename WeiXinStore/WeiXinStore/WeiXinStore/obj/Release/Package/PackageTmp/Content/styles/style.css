@@ -36,6 +36,12 @@ ul{
 .modal-dialog{
   max-width:400px;
 }
+.form-control
+{
+  padding:10px;
+  height:auto;
+  font-size:16px;
+}
 /*页脚*/
 .footer {
   position: absolute;
@@ -88,4 +94,14 @@ ul{
     }
 }
 
-/*商城主页*/
+/*详情页*/
+.btnBuy  
+{ 
+    width: 150px;
+}
+.btnToCart
+{
+    width: 150px;
+    margin-left: 20px;
+    float:right;
+}

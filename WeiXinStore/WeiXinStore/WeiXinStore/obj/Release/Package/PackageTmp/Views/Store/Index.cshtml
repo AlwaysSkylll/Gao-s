@@ -1,551 +1,74 @@
-﻿@{
+﻿@model WeiXinStore.Models.ProductListViewModel
+@{
     ViewBag.Title = "商城首页";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
-<script>
-    var $index = $('#index');
-    var $clear = $('#main-nav li a');
-    $index.on('click', function (event) {
-        $clear.removeClass("current");
-        $index.addClass("current");
-    });
-</script>
 <div class="container">
-    @*购物车popup*@
-   	<a href="#0" class="cart">
-		<span></span>
-	</a>
     @*商品列表*@
 	<ul class="cd-gallery">
+
+        @foreach (var item in Model.instrumentList)
+        {
+            if (item.InstrumentNum > 0)
+            {
 		<li>
+            <span style="display:none">@item.InstrumentId</span>
+            <span style="display:none">@item.InstrumentNum</span>
 			<div class="cd-single-item">
-				<a href="#0">
+				<a href="javascript:;">
 					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
+						<li class="selected"><img src="@item.ProductImg" alt="Preview image"></li>
 					</ul>
 				</a>
-
 				<div class="cd-customization">
-					<div class="color selected-2" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2 active">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
 					<button class="add-to-cart">
-						<em>Add to Cart</em>
+						<em>加入购物车</em>
 						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
 							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
 						</svg>
 					</button>
 				</div> <!-- .cd-customization -->
-
 				<button class="cd-customization-trigger">Customize</button>
 			</div> <!-- .cd-single-item -->
 
 			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
+				<b><a href="javascript:;">@item.InstrumentName</a></b>
+				<em>$@item.Instrumentprice</em>
 			</div> <!-- cd-item-info -->
 		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li class="selected"><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color" data-type="select">
-						<ul>
-							<li class="color-1 active">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color selected-3" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3 active">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-        <li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color selected-2" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2 active">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li class="selected"><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color" data-type="select">
-						<ul>
-							<li class="color-1 active">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color selected-3" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3 active">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-        <li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color selected-2" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2 active">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li class="selected"><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color" data-type="select">
-						<ul>
-							<li class="color-1 active">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color selected-3" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3 active">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-        <li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color selected-2" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2 active">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li class="selected"><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color" data-type="select">
-						<ul>
-							<li class="color-1 active">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
-
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="~/Content/images/thumb-1.jpg" alt="Preview image"></li>
-						<li><img src="~/Content/images/thumb-2.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="~/Content/images/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
-
-				<div class="cd-customization">
-					<div class="color selected-3" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2">color-2</li>
-							<li class="color-3 active">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b><a href="#0">Product Name</a></b>
-				<em>$9.99</em>
-			</div> <!-- cd-item-info -->
-		</li>
+            }
+        }
 	</ul> <!-- cd-gallery -->
 </div>
 
 <script src="~/Scripts/jquery.min.js"></script>
 <script src="~/Scripts/modernizr.js"></script>
-<script src="~/Scripts/singleitem.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () { 
+        if ($('#about').hasClass("current"))
+            $(this).removeClass("current");
+        if ($('#contact').hasClass("current"))
+            $(this).removeClass("current");
+        $('#index').addClass("current");
+
+        productHandle();
+        //商品列表绑定
+        function productHandle() {
+            var itemsLi = $('.cd-gallery li');
+            itemsLi.each(function () {
+                //所有商品跳转详情页
+                var itemATag = $(this).find('a');
+                var itemId = $(this).find('span').eq(0);
+                itemATag.on('click', function () {
+                    location.href = "/Store/ProductDetail?id=" + itemId.text();
+                })
+
+                //商品添加到购物车
+                $(this).find('button').eq(0).on('cilck', function () {
+                     
+                })
+            })
+        }
+    })
+</script>

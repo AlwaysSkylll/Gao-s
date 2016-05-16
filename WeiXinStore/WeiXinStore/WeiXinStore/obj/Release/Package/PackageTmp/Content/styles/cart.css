@@ -67,7 +67,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  height: 80px;
+  height: 60px;
   width: 100%;
   background: #31353d;
   text-align: center;
@@ -81,7 +81,7 @@ header {
 }
 
 #logo {
-  padding-top: 20px;
+  padding-top: 10px;
 
 }
 @media only screen and (min-width: 1200px) {
@@ -146,16 +146,18 @@ header {
   height: 100%;
   width: 260px;
   /* header height */
-  padding-top: 80px;
+  padding-top: 60px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 3;
 }
-@media only screen and (min-width: 768px) {
-  #main-nav, #cd-cart {
-    width: 350px;
-  }
+@media only screen and (min-width: 768px)
+{
+    #main-nav, #cd-cart
+    {
+        width: 350px;
+    }
 }
 @media only screen and (min-width: 1200px) {
   #main-nav, #cd-cart {

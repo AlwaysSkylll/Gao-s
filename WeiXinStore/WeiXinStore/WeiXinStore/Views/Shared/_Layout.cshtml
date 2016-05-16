@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,230 +11,179 @@
     @Styles.Render("~/Content/styles/singleitem.css")
 </head>
 <body>
-
-    @*导航栏：固定在页面最上方*@
-
-    <header>
-		<div id="logo"><img src="../../Content/images/logo.gif" alt="Brand"><span style="color:#fff;font-size:20px;padding:5px;font-weight:600;">音色</span></div>
-		<div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
-		<div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
-	</header>
-    <script>
-        var $about = $('#about');
-        var $clear = $('#main-nav li a');
-        $about.on('click', function (event) {
-            $clear.removeClass("current");
-            $about.addClass("current");
-        });
-</script>
-	<nav id="main-nav">
-		<ul>
-			<li><a id="index" class="current" href="Index">商城首页</a></li>
-			<li><a id="about" href="About">关于</a></li>
-			<li><a id="contact" href="Cover">联系</a></li>
-            <li><span class="button"><button type="button" id="btnregister" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myRegister">注册</button></span></li>
-            <li><span class="button"><button type="button" class="btn btn-primary navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></span></li>
-		</ul>
-	</nav>
+@*导航栏：固定在页面最上方*@
+<header>
+	<div id="logo"><img src="../../Content/images/logo.svg" alt="Brand"><span style="color:#fff;font-size:20px;padding:5px;font-weight:600;">音色</span></div>
+	<div id="cd-hamburger-menu"><a class="cd-img-replace" href="javascript:;">菜单</a></div>
+	<div id="cd-cart-trigger">
+        <a class="cd-img-replace" href="javascript:;">购物车</a>
+	</div>
+        @*购物车popup*@
+        <a href="javascript:;" class="cart">
+		    <span>0</span>
+	    </a>
+</header>
+    
+<nav id="main-nav">
+	<ul>
+		<li><a id="index" href="~/Store/Index">商城首页</a></li>
+		<li><a id="about" href="~/Store/About">关于</a></li>
+		<li><a id="contact" href="~/Store/Cover">联系</a></li>
+        <li><a id="usershow" href="javascript:;" >@Session["UserName"]</a></li>
+        <li><span class="button"><button type="button" id="btnquit" class="btn btn-danger navbar-btn">退出</button></span></li>
+        <li><span class="button"><button type="button" id="btnregister" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myRegister">注册</button></span></li>
+        <li><span class="button"><button type="button" id="btnlogin" class="btn btn-primary navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></span></li>
+	</ul>
+</nav>
 
 @*    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand">店名</a>
-                <div id="cd-cart-trigger" ><a class="cart" href="#0"><img class="cd-img-replace" src="~/Content/images/cd-cart.svg"/></a></div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">店名</a>
+            <div id="cd-cart-trigger" ><a class="cart" href="#0"><img class="cd-img-replace" src="~/Content/images/cd-cart.svg"/></a></div>
                 
-            </div>
-            <div id="navbar" class="navbar-collapse collapse navbar-right">
-                <ul class="nav navbar-nav ">
-                    <li class="action"><a href="Index">商城</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热销<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#吉他">吉他</a></li>
-                            <li><a href="#电吉他">电吉他</a></li>
-                            <li><a href="#乌克丽丽">乌克丽丽</a></li>
-                            <li role="separator" class="divider" ><a href="#"></a></li>
-                            <li><a href="#电子琴">电子琴</a></li>
-                            <li><a href="#古筝">古筝</a></li>
-                        </ul>
-                    </li>
-                    <li class="dorpdown">
-                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="http://weibo.com/3147341217/profile" target="_blank">新浪微博</a></li>
-                            <li><a href="https://github.com/AlwaysSkylll/Gao-s/tree/master/WeiXinStore/WeiXinStore" target="_blank">GitHub</a></li>
-                            <li><a href="About">关于我们</a></li>                           
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myRegister">注册</button></li>
-                    <li><button type="button" class="btn btn-primary navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></li>
-                </ul>   
-            </div>
         </div>
-    </nav>*@
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav ">
+                <li class="action"><a href="Index">商城</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热销<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#吉他">吉他</a></li>
+                        <li><a href="#电吉他">电吉他</a></li>
+                        <li><a href="#乌克丽丽">乌克丽丽</a></li>
+                        <li role="separator" class="divider" ><a href="#"></a></li>
+                        <li><a href="#电子琴">电子琴</a></li>
+                        <li><a href="#古筝">古筝</a></li>
+                    </ul>
+                </li>
+                <li class="dorpdown">
+                    <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://weibo.com/3147341217/profile" target="_blank">新浪微博</a></li>
+                        <li><a href="https://github.com/AlwaysSkylll/Gao-s/tree/master/WeiXinStore/WeiXinStore" target="_blank">GitHub</a></li>
+                        <li><a href="About">关于我们</a></li>                           
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myRegister">注册</button></li>
+                <li><button type="button" class="btn btn-primary navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></li>
+            </ul>   
+        </div>
+    </div>
+</nav>*@
 
     
-    @*购物车*@
-    <div id="cd-shadow-layer"></div>
-    <div id="cd-cart">
-		<h2>Cart</h2>
-		<ul class="cd-cart-items">
-			<li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
+@*购物车*@
+<div id="cd-shadow-layer"></div>
+<div id="cd-cart">
 
-			<li>
-				<span class="cd-qty">2x</span> Product Name
-				<div class="cd-price">$19.98</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
+	<h2>购物车</h2>
+	<ul class="cd-cart-items">
+	</ul> <!-- cd-cart-items -->
 
-			<li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-            <li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-            <li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-            <li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-            <li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-            <li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-		</ul> <!-- cd-cart-items -->
+	<div class="cd-cart-total">
+		<p>合计 <span>$0</span></p>
+	</div> <!-- cd-cart-total -->
 
-		<div class="cd-cart-total">
-			<p>Total <span>$39.96</span></p>
-		</div> <!-- cd-cart-total -->
-
-		<a href="#0" class="checkout-btn">Checkout</a>
+	<a href="javascript:;" class="checkout-btn">下单</a>
 		
-		<p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
-	</div> <!-- cd-cart -->
+</div> <!-- cd-cart -->
 
-    @*登陆注册模态框*@
-    <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myLoginLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" >
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
-                    <h4 class="modal-title" id="myLoginLabel">登录</h4>
-                </div>
+@*登陆注册模态框*@
+<div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myLoginLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+                <h4 class="modal-title" id="myLoginLabel">登录</h4>
+            </div>
                 
-                <div class="modal-body">
-                    <form role="form" >
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="Phone" placeholder="请输入手机号"/>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="Name" placeholder="请输入密码"/>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value=""/>自动登陆（10天内有效）</label>
-                        </div>
-                        <a href="#">忘记密码？</a>
-                        <button type="button" class="btn btn-primary" style="float:right;">登录</button>
-                    </form>
-                </div>
+            <div class="modal-body">
+                <form role="form" id="login_form" action="../UserLog/LogIn" method="post">
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="lphone" name="Phone" maxlength="11" placeholder="请输入手机号"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="pwd" name="Password" maxlength="16" placeholder="请输入密码"/>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="1"/>自动登陆（10天内有效）</label>
+                    </div>
+                    <a href="javascript:;">忘记密码？</a>
+                    <button type="button" id="login" class="btn btn-primary" style="float:right;">登录</button>
+                    <input id="temp2" type="text" value="" style="display:none"/>
+                </form>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="myRegister" tabindex="-1" role="dialog" aria-labelledby="myRegisterLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" >
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
-                    <h4 class="modal-title" id="myRegisterLabel">快速注册</h4>
-                </div>
+</div>
+<div class="modal fade" id="myRegister" tabindex="-1" role="dialog" aria-labelledby="myRegisterLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+                <h4 class="modal-title" id="myRegisterLabel">快速注册</h4>
+            </div>
                 
-                <div class="modal-body">
-                    <form role="form" id="register_form" action="../User/Register" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="rphone" name="Phone" maxlength="11" placeholder="请输入手机号"/>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="rname" name="Name" placeholder="请输入姓名"/>
-                        </div>
+            <div class="modal-body">
+                <form role="form" class="form-signin" id="register_form" action="../UserRegister/Register" method="post">
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="rphone" name="Phone" maxlength="11" placeholder="请输入手机号"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="rname" name="Name" maxlength="6" placeholder="请输入姓名"/>
+                    </div>
                         
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="rpwd" name="Password" placeholder="请输入密码"/>
-                        </div>
-                        <div class="form-group">
-                            @*<div class="input-group">
-                                <input type="password" class="form-control" placeholder="请确认输入密码"/>
-                                <span class="input-group-btn" ><button type="submit" class="btn btn-success">注册</button></span>
-                            </div>  *@
-                            <input type="password" class="form-control" id="rrpwd" placeholder="请确认输入密码"/>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="rpwd" maxlength="16" name="Password" placeholder="请输入密码"/>
+                    </div>
+                    <div class="form-group">
+                        @*<div class="input-group">
+                            <input type="password" class="form-control" placeholder="请确认输入密码"/>
+                            <span class="input-group-btn" ><button type="submit" class="btn btn-success">注册</button></span>
+                        </div>  *@
+                        <input type="password" class="form-control" id="rrpwd" placeholder="请确认输入密码"/>
                             
-                        </div>
-                        <div class="form-group"><a href="#">相关条款</a></div> 
-                        <div style="text-align:center;">
-                            <button id="register" type="button" class="btn btn-lg  btn-success" style="width:100%;">注册</button>
-                        </div>
-                        <input id="temp" type="text" value="" style="display:none"/>
-                    </form>
-                </div>
+                    </div>
+                    <div class="form-group"><a href="javascript:;">相关条款</a></div> 
+                    <div style="text-align:center;">
+                        <button id="register" type="button" class="btn btn-lg  btn-success" style="width:100%;">注册</button>
+                    </div>
+                    <input id="temp1" type="text" value="" style="display:none"/>
+                </form>
+            </div>
 
                 
-                <div class="modal-footer"> 
-                    <button type="button" class="btn btn-default" data-dismiss="modal">让我再逛逛</button>
-                </div>
+            <div class="modal-footer"> 
+                <button type="button" class="btn btn-default" data-dismiss="modal">让我再逛逛</button>
             </div>
         </div>
     </div>
-
-
-
-
+</div>
+       
     @RenderBody()
-
-
-    @*页脚*@
+     @*页脚*@
     <div class="container">
         <footer>
-            <p class="pull-right"><a href="#">back to top</a></p>
-            <p>&copy; 2016 Gao's, Inc. &middot; <a href="#">Privacy</a>&middot; <a href="#">Terms</a></p>
+            <p class="pull-right"><a href="javascript:;">back to top</a></p>
+            <p>&copy; 2016 Gao's, Inc. &middot; <a href="javascript:;">Privacy</a>&middot; <a href="javascript:;">Terms</a></p>
         </footer>
     </div>
-    
-
 
     <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/modernizr.js"></script>
     <script src="~/Scripts/cart.js"></script>
     <script src="~/Scripts/main.js"></script>
-
     @RenderSection("scripts", required: false)
 
 </body>
 </html>
-

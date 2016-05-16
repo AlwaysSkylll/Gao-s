@@ -29,4 +29,3 @@ C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\zh-Hans\System.We
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Debug\WeiXinStore.dll
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Debug\WeiXinStore.pdb
-C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Debug\WeiXinStore.csprojResolveAssemblyReference.cache

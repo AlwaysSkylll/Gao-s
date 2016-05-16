@@ -49,12 +49,9 @@ Cart button
 -------------------------------- */
 .cart {
   position: fixed;
-  z-index: 2;
-  top: 80px;
-  right: 10px;
-  height: 50px;
-  width: 50px;
-  background: url(../../Content/images/cd-icon-cart.svg) no-repeat center center;
+  z-index: 4;
+  top: 10px;
+  right: 5px;
 }
 .cart span {
   /* number of items added to the cart */
@@ -91,8 +88,8 @@ Cart button
 @media only screen and (min-width: 1100px) {
   .cart {
     position: fixed;
-    top: 80px;
-    right: 30px;
+    top: 10px;
+    right: 5px;
   }
 }
 
@@ -442,10 +439,10 @@ Product Customization
   padding: 0 1em;
 }
 .cd-customization .size, .cd-customization .add-to-cart {
-  width: calc(50% - 23px);
+  width: 100%;
 }
 .cd-customization .size li, .cd-customization .add-to-cart {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
   line-height: 34px;
@@ -459,7 +456,7 @@ Product Customization
 .no-touch .cd-customization .add-to-cart:hover {
   background-color: #55bca8;
 }
-.cd-customization .add-to-cart em {
+.cd-customization .add-to-cart span {
   /* this is the button text message */
   position: absolute;
   top: 0;

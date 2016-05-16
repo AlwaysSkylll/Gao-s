@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="StoreModelStoreContainer">
+          <EntitySet Name="instruments" EntityType="StoreModel.Store.instruments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="StoreModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="shopcart" EntityType="StoreModel.Store.shopcart" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users" EntityType="StoreModel.Store.users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="instruments">
+          <Key>
+            <PropertyRef Name="InstrumentId" />
+          </Key>
+          <Property Name="InstrumentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstrumentNum" Type="int" Nullable="false" />
+          <Property Name="InstrumentName" Type="nvarchar" MaxLength="20" />
+          <Property Name="InstrumentDescribe" Type="nvarchar(max)" />
+          <Property Name="Instrumentprice" Type="float" />
+          <Property Name="Img1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img6" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductImg" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderJson" Type="nvarchar(max)" />
+          <Property Name="OrderNum" Type="int" />
+          <Property Name="OrderPrice" Type="float" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="shopcart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="int" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CartJson" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="CountNum" Type="int" />
+          <Property Name="CountPrice" Type="float" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="Sex" Type="int" />
+          <Property Name="CartId" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoreModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StoreEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="instruments" EntityType="StoreModel.instruments" />
+          <EntitySet Name="Order" EntityType="StoreModel.Order" />
+          <EntitySet Name="shopcart" EntityType="StoreModel.shopcart" />
+          <EntitySet Name="users" EntityType="StoreModel.users" />
+        </EntityContainer>
+        <EntityType Name="instruments">
+          <Key>
+            <PropertyRef Name="InstrumentId" />
+          </Key>
+          <Property Name="InstrumentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="InstrumentNum" Type="Int32" Nullable="false" />
+          <Property Name="InstrumentName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="InstrumentDescribe" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Instrumentprice" Type="Double" />
+          <Property Name="Img1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Img2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Img3" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Img4" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Img5" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Img6" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductImg" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OrderNum" Type="Int32" />
+          <Property Name="OrderPrice" Type="Double" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="shopcart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="None" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CartJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="CountNum" Type="Int32" />
+          <Property Name="CountPrice" Type="Double" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="Int32" />
+          <Property Name="CartId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoreModelStoreContainer" CdmEntityContainer="StoreEntities">
+          <EntitySetMapping Name="instruments">
+            <EntityTypeMapping TypeName="StoreModel.instruments">
+              <MappingFragment StoreEntitySet="instruments">
+                <ScalarProperty Name="InstrumentId" ColumnName="InstrumentId" />
+                <ScalarProperty Name="InstrumentNum" ColumnName="InstrumentNum" />
+                <ScalarProperty Name="InstrumentName" ColumnName="InstrumentName" />
+                <ScalarProperty Name="InstrumentDescribe" ColumnName="InstrumentDescribe" />
+                <ScalarProperty Name="Instrumentprice" ColumnName="Instrumentprice" />
+                <ScalarProperty Name="Img1" ColumnName="Img1" />
+                <ScalarProperty Name="Img2" ColumnName="Img2" />
+                <ScalarProperty Name="Img3" ColumnName="Img3" />
+                <ScalarProperty Name="Img4" ColumnName="Img4" />
+                <ScalarProperty Name="Img5" ColumnName="Img5" />
+                <ScalarProperty Name="Img6" ColumnName="Img6" />
+                <ScalarProperty Name="ProductImg" ColumnName="ProductImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="StoreModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderJson" ColumnName="OrderJson" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shopcart">
+            <EntityTypeMapping TypeName="StoreModel.shopcart">
+              <MappingFragment StoreEntitySet="shopcart">
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CartJson" ColumnName="CartJson" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CountNum" ColumnName="CountNum" />
+                <ScalarProperty Name="CountPrice" ColumnName="CountPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="StoreModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
