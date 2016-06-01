@@ -29,3 +29,7 @@ C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\zh-Hans\System.We
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Debug\WeiXinStore.dll
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Debug\WeiXinStore.pdb
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.dll
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.MP.dll
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.xml
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.MP.xml

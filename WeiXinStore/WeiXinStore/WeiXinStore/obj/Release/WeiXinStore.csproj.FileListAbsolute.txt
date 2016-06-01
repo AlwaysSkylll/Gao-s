@@ -30,3 +30,7 @@ C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\zh-Hans\System.We
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Release\WeiXinStore.dll
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Release\WeiXinStore.pdb
 C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\obj\Release\WeiXinStore.csprojResolveAssemblyReference.cache
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.dll
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.MP.dll
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.xml
+C:\Users\DaPao\Desktop\WeiXinStore\WeiXinStore\WeiXinStore\bin\Senparc.Weixin.MP.xml

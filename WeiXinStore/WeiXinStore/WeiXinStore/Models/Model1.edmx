@@ -4,13 +4,28 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="StoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="StoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="StoreModelStoreContainer">
+          <EntitySet Name="address" EntityType="StoreModel.Store.address" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="instruments" EntityType="StoreModel.Store.instruments" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Order" EntityType="StoreModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="order" EntityType="StoreModel.Store.order" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="shopcart" EntityType="StoreModel.Store.shopcart" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="users" EntityType="StoreModel.Store.users" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provin" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="Area" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="instruments">
           <Key>
             <PropertyRef Name="InstrumentId" />
@@ -28,21 +43,23 @@
           <Property Name="Img6" Type="nvarchar" MaxLength="50" />
           <Property Name="ProductImg" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="order">
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
-          <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="OrderJson" Type="nvarchar(max)" />
-          <Property Name="OrderNum" Type="int" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="CartId" Type="int" />
           <Property Name="OrderPrice" Type="float" />
           <Property Name="CreateTime" Type="datetime" />
+          <Property Name="OrderStatus" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AddressId" Type="int" />
         </EntityType>
         <EntityType Name="shopcart">
           <Key>
             <PropertyRef Name="CartId" />
           </Key>
-          <Property Name="CartId" Type="int" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="CartId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CartJson" Type="nvarchar(max)" />
           <Property Name="CreateTime" Type="datetime" />
@@ -61,17 +78,35 @@
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="Sex" Type="int" />
           <Property Name="CartId" Type="int" />
+          <Property Name="OpenId" Type="nvarchar" MaxLength="50" />
+          <Property Name="headimgurl" Type="nvarchar(max)" />
         </EntityType>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StoreModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="StoreEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="address" EntityType="StoreModel.address" />
           <EntitySet Name="instruments" EntityType="StoreModel.instruments" />
-          <EntitySet Name="Order" EntityType="StoreModel.Order" />
+          <EntitySet Name="order" EntityType="StoreModel.order" />
           <EntitySet Name="shopcart" EntityType="StoreModel.shopcart" />
           <EntitySet Name="users" EntityType="StoreModel.users" />
         </EntityContainer>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Provin" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Area" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Detail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PostCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+        </EntityType>
         <EntityType Name="instruments">
           <Key>
             <PropertyRef Name="InstrumentId" />
@@ -89,21 +124,23 @@
           <Property Name="Img6" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ProductImg" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="order">
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
-          <Property Name="OrderId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="OrderNum" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="CartId" Type="Int32" />
           <Property Name="OrderPrice" Type="Double" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="OrderStatus" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" />
         </EntityType>
         <EntityType Name="shopcart">
           <Key>
             <PropertyRef Name="CartId" />
           </Key>
-          <Property Name="CartId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="None" />
+          <Property Name="CartId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="CartJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
@@ -122,6 +159,8 @@
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="Sex" Type="Int32" />
           <Property Name="CartId" Type="Int32" />
+          <Property Name="OpenId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="headimgurl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -129,6 +168,21 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="StoreModelStoreContainer" CdmEntityContainer="StoreEntities">
+          <EntitySetMapping Name="address">
+            <EntityTypeMapping TypeName="StoreModel.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Provin" ColumnName="Provin" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="instruments">
             <EntityTypeMapping TypeName="StoreModel.instruments">
               <MappingFragment StoreEntitySet="instruments">
@@ -147,14 +201,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="StoreModel.Order">
-              <MappingFragment StoreEntitySet="Order">
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="StoreModel.order">
+              <MappingFragment StoreEntitySet="order">
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="OrderJson" ColumnName="OrderJson" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
                 <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -181,6 +237,8 @@
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+                <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

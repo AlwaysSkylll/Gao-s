@@ -33,7 +33,7 @@
 
 			<div class="cd-item-info">
 				<b><a href="javascript:;">@item.InstrumentName</a></b>
-				<em>$@item.Instrumentprice</em>
+				<em>¥@item.Instrumentprice</em>
 			</div> <!-- cd-item-info -->
 		</li>
             }
@@ -56,17 +56,17 @@
         //商品列表绑定
         function productHandle() {
             var itemsLi = $('.cd-gallery li');
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]); return null;
+            }
             itemsLi.each(function () {
                 //所有商品跳转详情页
                 var itemATag = $(this).find('a');
                 var itemId = $(this).find('span').eq(0);
                 itemATag.on('click', function () {
                     location.href = "/Store/ProductDetail?id=" + itemId.text();
-                })
-
-                //商品添加到购物车
-                $(this).find('button').eq(0).on('cilck', function () {
-                     
                 })
             })
         }

@@ -12,12 +12,14 @@ namespace WeiXinStore.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class order
     {
         public int OrderId { get; set; }
-        public string OrderJson { get; set; }
-        public Nullable<int> OrderNum { get; set; }
+        public Nullable<int> CartId { get; set; }
         public Nullable<double> OrderPrice { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
+        public Nullable<int> OrderStatus { get; set; }
+        public int UserId { get; set; }
+        public Nullable<int> AddressId { get; set; }
     }
 }

@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+@model WeiXinStore.Models.order
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/addrPlusCenter.css" />
+    <title>确认交易</title>
+    <style>
+        body
+        {
+            background:white;
+        }
+        hr
+        {
+            width:100%;
+        }
+        .header
+        {
+            height:50px;
+            background:#333232;
+            color:#bebdbd;
+            font-size:20px;
+        }
+        .header p
+        {
+            position:relative;
+            bottom:8px;
+        }
+        .header p:nth-child(2)
+        {
+            font-size:16px;
+            color:#909090;
+        }
+        .paybtn
+        {
+            background:#45cb2b;
+        }
+        .content
+        {
+            color:#000;
+            margin-top:25px;
+        }
+        h4
+        {
+            font-size:19px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:center;
+            font-weight:500;
+        }
+        h1
+        {
+            font-family:'Times New Roman';
+            font-size:60px;
+            font-weight:600;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:center;
+        }
+        .content p
+        {
+            color:#808080;
+            padding:0 15px 2px 15px;
+        }
+        .content p:nth-of-type(1)::after
+        {
+            float:right;
+            content:"音色商城";
+            color:#000;
+        }
+        .content p:nth-of-type(2)::after
+        {
+            float:right;
+            content:"音色商城商品";
+            color:#000;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <p>确认交易</p>
+        <p>微信安全支付</p>
+    </div>
+    <div class="content">
+        <h4>音色商城-订单编号<span>@Model.OrderId</span></h4>
+        <h1 class="pay-count">¥@Model.OrderPrice</h1>
+        <hr />
+        <p>收款方</p>
+        <p>商&nbsp 品</p>
+        <hr />
+    </div>
+    <a class="paybtn" >立即支付</a>
+</body>
+</html>

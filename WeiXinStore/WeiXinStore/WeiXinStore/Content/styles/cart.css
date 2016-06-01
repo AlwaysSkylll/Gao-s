@@ -184,6 +184,13 @@ header {
   padding: 0 1em;
   border-bottom: 1px solid #e0e6ef;
 }
+#main-nav #usershow{
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 1em;
+  border-bottom: none;
+}
 #main-nav ul .button{
   display: block;
   height: 50px;

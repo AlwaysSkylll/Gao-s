@@ -22,5 +22,7 @@ namespace WeiXinStore.Models
         public Nullable<System.DateTime> CreateTime { get; set; }
         public Nullable<int> Sex { get; set; }
         public Nullable<int> CartId { get; set; }
+        public string OpenId { get; set; }
+        public string headimgurl { get; set; }
     }
 }

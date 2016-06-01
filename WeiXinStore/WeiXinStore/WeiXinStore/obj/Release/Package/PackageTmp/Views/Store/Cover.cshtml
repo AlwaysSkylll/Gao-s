@@ -42,5 +42,24 @@
             <p class="text-muted">cover template for <a href="#">bootstrap</a>,by<a href="#"> Gao's</a></p>
         </div>
     </footer>*@
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]); return null;
+            }
+            var code = getUrlParam("code");
+            $.ajax({
+                url: "CodeToToken",
+                type: "POST",
+                dataType: "JSON",
+                data: { "code": code },
+                success: function (data) {
+                }
+            })
+        })
+    </script>
 </body>
 </html>

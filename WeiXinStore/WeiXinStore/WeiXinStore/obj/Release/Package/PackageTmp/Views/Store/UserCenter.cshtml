@@ -1,0 +1,103 @@
+﻿@{
+    Layout = null;
+}
+@model WeiXinStore.Models.users
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/addrPlusCenter.css" />
+    <title>个人中心</title>
+    <style>
+        div
+        {
+            padding:0;
+            margin:0;
+        }
+        .userinfo
+        {
+            font-size:18px;
+            text-align:center;
+            background:none;
+            color:#fff;
+        }
+        .userinfo img
+        {
+            width:100px;
+            height:100px;
+        }
+        .userinfo p
+        {
+            margin-top:10px;
+        }
+        .username
+        {
+            display:-webkit-flex;
+            display:flex;
+            justify-content:space-around;
+        }
+        .username>p
+        {
+            width:50%;
+            display:inline-block;
+        }
+        .username p:nth-child(2)
+        {
+            text-align:left;
+        }
+        h3
+        {
+            text-align:center;
+        }
+        .circle
+        {
+            border-radius:0;
+        }
+        .flexbox a img
+        {
+            width:100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="normal-padding box-shadow" style="background:url('../Content/images/wallpaper.jpg') right bottom">
+        @*用户信息*@
+        <div class="userinfo">
+            <img src="@Model.headimgurl" alt="headimgurl"/>
+            <p>普通用户</p>
+        </div>
+        <hr />
+        <div class="userinfo username">
+            <p>用户名：</p>
+            <p>@Model.Name</p>
+        </div>
+        <div class="userinfo username">
+            <p>性&nbsp 别：</p>
+            @if (Model.Sex == 1)
+            { <p>男</p>}
+            else if (Model.Sex == 2)
+            { <p>女</p>}
+            else
+            { <p>未知</p>}
+        </div>
+    </div>
+    <div class="flexbox box-shadow normal-padding">
+        <a href="AddressManage">
+            <div>
+                <img src="../../Content/images/map.png"></img>
+                <p>地址管理</p>
+            </div>
+        </a>
+        <a href="#">
+            <div>
+                <img src="../../Content/images/clipboard_attachment.png"></img>
+                <p>订单管理</p>
+            </div>
+        </a>
+    </div>
+
+</body>
+</html>

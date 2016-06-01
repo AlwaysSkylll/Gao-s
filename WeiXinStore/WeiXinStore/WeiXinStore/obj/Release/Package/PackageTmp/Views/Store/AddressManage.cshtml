@@ -1,0 +1,110 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/addrPlusCenter.css" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/addrPlusCenter.js"></script>
+    <title>地址管理</title>
+    <style>
+    .addr-list .delete,.addr-list .modify
+    {
+        width: 50px;
+        color: dodgerblue;
+        margin-left:5px;
+    }
+    .addr-list .delete
+    {
+        color: orangered;
+        float:right;
+    }
+    </style>
+</head>
+<body>
+    @*loading遮罩*@
+    <div class="loading"></div>
+    <script>
+        showLoading();
+    </script>
+    @*遮罩层*@
+    <div class="overlay"></div>
+     <!--地址列表-->
+    <div class="addr-list addr-list-fullwidth box-shadow">
+        <div class="header">
+            <p>地址列表</p>
+        </div>
+        <hr />
+        <div>
+            <ul>
+              @*  <li>
+                    <span>15726816249</span>&nbsp
+                    <span>高勇</span>
+                    <span>详细地址</span>
+                    <a class="delete" href="javascript:;">删除</a>
+                    <a class="modify" href="javascript:;">修改</a>
+                </li>*@
+            </ul>
+        </div>
+        <div><a class="new-addr-btn" href="javascript:;">新建地址</a></div>
+    </div>
+    @*<h3>我的订单</h3>
+    <div class="order-list box-shadow">
+        <em>无订单</em>
+    </div>*@
+
+    
+    @*新建地址弹出层*@
+    <form class="new-addr box-shadow">
+        <div class="form-group">
+            <select class="form-control input" id="s_province" name="s_province"></select>
+        </div>
+        <div class="form-group">
+            <select class="form-control input" id="s_city" name="s_city"></select>
+        </div>
+        <div class="form-group">
+            <select class="form-control input" id="s_county" name="s_county"></select>
+        </div>
+        <div class="form-group">
+            <input class="form-control input" id="s_detail" type="text" placeholder="详细地址"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control input" id="s_name" type="text" placeholder="收件人"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control input" id="s_tel" type="tel" maxlength="11" placeholder="手机号码"/>
+            <a class="confirm-addr box-shadow" onclick="addr_btn(0)">新建地址</a>
+        </div>        
+    </form>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/area.js"></script>
+    <script type="text/javascript">_init_area();</script>
+    <script>
+        $(document).ready(function () {
+            addr_load(0);
+            
+            //地址选择
+            $('.overlay').on('click', function () {
+                $('.new-addr').fadeOut();
+                setTimeout("hideOverlay()", 200);
+            });
+            $('.modify').on('click', function () {
+                showOverlay();
+                setTimeout("$('.new-addr').fadeIn()", 200);
+            });
+            $('.new-addr-btn').on('click', function () {
+                showOverlay();
+                setTimeout("$('.new-addr').fadeIn()", 200);
+            });
+            hideLoading();
+        })
+
+    </script>
+</body>
+</html>

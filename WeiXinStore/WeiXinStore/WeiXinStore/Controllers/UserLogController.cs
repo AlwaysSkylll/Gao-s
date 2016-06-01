@@ -38,11 +38,11 @@ namespace WeiXinStore.Controllers
                 {
                     if (phonenum == u.Phone && password == u.Password)
                     {
-                        var UserName = u.Name;
-                        Session["UserName"] = UserName;
+                        Session["UserName"] = u.Name;
                         Session["UserId"] = u.UserId;
                         Response.Write("1");
                         Response.End();
+                        break;
                     }
                 }
             }

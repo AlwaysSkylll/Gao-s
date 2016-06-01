@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="StoreModelStoreContainer">
+    <EntitySet Name="address" EntityType="StoreModel.Store.address" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="instruments" EntityType="StoreModel.Store.instruments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="order" EntityType="StoreModel.Store.order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="shopcart" EntityType="StoreModel.Store.shopcart" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users" EntityType="StoreModel.Store.users" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Provin" Type="int" />
+    <Property Name="City" Type="int" />
+    <Property Name="Area" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="instruments">
+    <Key>
+      <PropertyRef Name="InstrumentId" />
+    </Key>
+    <Property Name="InstrumentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="InstrumentNum" Type="int" Nullable="false" />
+    <Property Name="InstrumentName" Type="nvarchar" MaxLength="20" />
+    <Property Name="InstrumentDescribe" Type="nvarchar(max)" />
+    <Property Name="Instrumentprice" Type="float" />
+    <Property Name="Img1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Img2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Img3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Img4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Img5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Img6" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductImg" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrderJson" Type="nvarchar(max)" />
+    <Property Name="OrderPrice" Type="float" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="OrderStatus" Type="int" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="shopcart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CartJson" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="CountNum" Type="int" />
+    <Property Name="CountPrice" Type="float" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Sex" Type="int" />
+    <Property Name="CartId" Type="int" />
+    <Property Name="OpenId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+</Schema>

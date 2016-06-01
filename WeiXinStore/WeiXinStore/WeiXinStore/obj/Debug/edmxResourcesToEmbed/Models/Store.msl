@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoreModelStoreContainer" CdmEntityContainer="StoreEntities">
+    <EntitySetMapping Name="address">
+      <EntityTypeMapping TypeName="StoreModel.address">
+        <MappingFragment StoreEntitySet="address">
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Provin" ColumnName="Provin" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="instruments">
+      <EntityTypeMapping TypeName="StoreModel.instruments">
+        <MappingFragment StoreEntitySet="instruments">
+          <ScalarProperty Name="InstrumentId" ColumnName="InstrumentId" />
+          <ScalarProperty Name="InstrumentNum" ColumnName="InstrumentNum" />
+          <ScalarProperty Name="InstrumentName" ColumnName="InstrumentName" />
+          <ScalarProperty Name="InstrumentDescribe" ColumnName="InstrumentDescribe" />
+          <ScalarProperty Name="Instrumentprice" ColumnName="Instrumentprice" />
+          <ScalarProperty Name="Img1" ColumnName="Img1" />
+          <ScalarProperty Name="Img2" ColumnName="Img2" />
+          <ScalarProperty Name="Img3" ColumnName="Img3" />
+          <ScalarProperty Name="Img4" ColumnName="Img4" />
+          <ScalarProperty Name="Img5" ColumnName="Img5" />
+          <ScalarProperty Name="Img6" ColumnName="Img6" />
+          <ScalarProperty Name="ProductImg" ColumnName="ProductImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="StoreModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderJson" ColumnName="OrderJson" />
+          <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shopcart">
+      <EntityTypeMapping TypeName="StoreModel.shopcart">
+        <MappingFragment StoreEntitySet="shopcart">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CartJson" ColumnName="CartJson" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CountNum" ColumnName="CountNum" />
+          <ScalarProperty Name="CountPrice" ColumnName="CountPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="StoreModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

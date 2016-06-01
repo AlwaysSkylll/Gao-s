@@ -1,11 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="StoreModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="StoreEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="address" EntityType="StoreModel.address" />
     <EntitySet Name="instruments" EntityType="StoreModel.instruments" />
-    <EntitySet Name="Order" EntityType="StoreModel.Order" />
+    <EntitySet Name="order" EntityType="StoreModel.order" />
     <EntitySet Name="shopcart" EntityType="StoreModel.shopcart" />
     <EntitySet Name="users" EntityType="StoreModel.users" />
   </EntityContainer>
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Provin" Type="Int32" />
+    <Property Name="City" Type="Int32" />
+    <Property Name="Area" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Detail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PostCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+  </EntityType>
   <EntityType Name="instruments">
     <Key>
       <PropertyRef Name="InstrumentId" />
@@ -23,21 +38,23 @@
     <Property Name="Img6" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="ProductImg" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
   </EntityType>
-  <EntityType Name="Order">
+  <EntityType Name="order">
     <Key>
       <PropertyRef Name="OrderId" />
     </Key>
-    <Property Name="OrderId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="OrderNum" Type="Int32" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="CartId" Type="Int32" />
     <Property Name="OrderPrice" Type="Double" />
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="OrderStatus" Type="Int32" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="AddressId" Type="Int32" />
   </EntityType>
   <EntityType Name="shopcart">
     <Key>
       <PropertyRef Name="CartId" />
     </Key>
-    <Property Name="CartId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="None" />
+    <Property Name="CartId" Type="Int32" Nullable="false" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
     <Property Name="CartJson" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
@@ -56,5 +73,7 @@
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <Property Name="Sex" Type="Int32" />
     <Property Name="CartId" Type="Int32" />
+    <Property Name="OpenId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="headimgurl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
 </Schema>

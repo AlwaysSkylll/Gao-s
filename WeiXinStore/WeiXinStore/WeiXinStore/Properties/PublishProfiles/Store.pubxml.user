@@ -23,10 +23,10 @@
       <publishTime>04/07/2016 21:23:12</publishTime>
     </File>
     <File Include="bin/Senparc.Weixin.dll">
-      <publishTime>05/15/2016 02:52:49</publishTime>
+      <publishTime>05/22/2016 02:29:24</publishTime>
     </File>
     <File Include="bin/Senparc.Weixin.MP.dll">
-      <publishTime>05/15/2016 02:52:49</publishTime>
+      <publishTime>05/22/2016 02:39:02</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>04/07/2016 21:23:13</publishTime>
@@ -53,7 +53,7 @@
       <publishTime>04/07/2016 21:23:15</publishTime>
     </File>
     <File Include="bin/WeiXinStore.dll">
-      <publishTime>05/15/2016 12:41:01</publishTime>
+      <publishTime>06/02/2016 00:08:14</publishTime>
     </File>
     <File Include="bin/zh-Hans/EntityFramework.resources.dll">
       <publishTime>04/07/2016 21:23:17</publishTime>
@@ -118,14 +118,29 @@
     <File Include="Content/images/cdfd226egw1euhlv3ehlcj21hc0u0dov.jpg">
       <publishTime>04/13/2016 00:28:11</publishTime>
     </File>
+    <File Include="Content/images/clipboard_attachment.png">
+      <publishTime>06/01/2016 10:52:35</publishTime>
+    </File>
     <File Include="Content/images/jquery.ui.button.css">
       <publishTime>04/07/2016 21:23:11</publishTime>
+    </File>
+    <File Include="Content/images/loading.gif">
+      <publishTime>06/01/2016 23:42:36</publishTime>
+    </File>
+    <File Include="Content/images/location.png">
+      <publishTime>05/28/2016 23:12:44</publishTime>
     </File>
     <File Include="Content/images/logo.gif">
       <publishTime>04/15/2016 17:56:45</publishTime>
     </File>
     <File Include="Content/images/logo.svg">
       <publishTime>05/02/2016 00:05:07</publishTime>
+    </File>
+    <File Include="Content/images/map.png">
+      <publishTime>06/01/2016 10:52:35</publishTime>
+    </File>
+    <File Include="Content/images/plus49.png">
+      <publishTime>05/29/2016 02:39:40</publishTime>
     </File>
     <File Include="Content/images/thumb-1.jpg">
       <publishTime>04/14/2016 17:12:09</publishTime>
@@ -211,11 +226,14 @@
     <File Include="Content/style.css">
       <publishTime>04/14/2016 15:26:27</publishTime>
     </File>
+    <File Include="Content/styles/addrPlusCenter.css">
+      <publishTime>06/02/2016 01:12:37</publishTime>
+    </File>
     <File Include="Content/styles/bootstrap.min.css">
       <publishTime>04/07/2016 22:10:18</publishTime>
     </File>
     <File Include="Content/styles/cart.css">
-      <publishTime>05/02/2016 23:24:05</publishTime>
+      <publishTime>05/21/2016 23:45:58</publishTime>
     </File>
     <File Include="Content/styles/cover.css">
       <publishTime>05/04/2016 15:22:16</publishTime>
@@ -230,7 +248,7 @@
       <publishTime>04/07/2016 21:23:00</publishTime>
     </File>
     <File Include="Content/styles/style.css">
-      <publishTime>05/03/2016 13:48:32</publishTime>
+      <publishTime>06/01/2016 21:50:23</publishTime>
     </File>
     <File Include="Content/themes/base/images/49knf36bw.jpg">
       <publishTime>04/13/2016 00:21:56</publishTime>
@@ -425,19 +443,34 @@
       <publishTime>04/07/2016 21:23:00</publishTime>
     </File>
     <File Include="Models/Model1.Context.tt">
-      <publishTime>05/04/2016 17:17:57</publishTime>
+      <publishTime>06/01/2016 17:48:47</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>05/04/2016 17:18:06</publishTime>
+      <publishTime>06/01/2016 17:49:07</publishTime>
     </File>
     <File Include="Models/Model1.tt">
-      <publishTime>05/04/2016 17:17:57</publishTime>
+      <publishTime>06/01/2016 17:48:47</publishTime>
+    </File>
+    <File Include="Models/Store.Context.tt">
+      <publishTime>05/20/2016 05:34:10</publishTime>
+    </File>
+    <File Include="Models/Store.edmx.diagram">
+      <publishTime>05/20/2016 05:34:15</publishTime>
+    </File>
+    <File Include="Models/Store.tt">
+      <publishTime>05/20/2016 05:34:10</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>05/15/2016 02:52:52</publishTime>
+      <publishTime>05/22/2016 02:39:04</publishTime>
     </File>
     <File Include="Properties/Settings.settings">
       <publishTime>04/07/2016 23:49:48</publishTime>
+    </File>
+    <File Include="Scripts/addrPlusCenter.js">
+      <publishTime>06/02/2016 01:15:58</publishTime>
+    </File>
+    <File Include="Scripts/area.js">
+      <publishTime>05/29/2016 00:16:16</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>04/07/2016 22:48:41</publishTime>
@@ -488,7 +521,7 @@
       <publishTime>04/07/2016 21:23:15</publishTime>
     </File>
     <File Include="Scripts/main.js">
-      <publishTime>05/15/2016 12:54:51</publishTime>
+      <publishTime>05/31/2016 22:15:50</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.5.3.js">
       <publishTime>04/07/2016 21:23:12</publishTime>
@@ -498,6 +531,9 @@
     </File>
     <File Include="Scripts/singleitem.js">
       <publishTime>05/07/2016 01:09:51</publishTime>
+    </File>
+    <File Include="Scripts/zepto.min.js">
+      <publishTime>05/28/2016 17:24:01</publishTime>
     </File>
     <File Include="Scripts/_references.js">
       <publishTime>04/07/2016 21:23:10</publishTime>
@@ -518,28 +554,43 @@
       <publishTime>05/01/2016 15:05:40</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/06/2016 16:26:54</publishTime>
+      <publishTime>06/02/2016 01:21:04</publishTime>
     </File>
     <File Include="Views/Store/About.cshtml">
-      <publishTime>05/04/2016 17:48:46</publishTime>
+      <publishTime>06/01/2016 21:54:11</publishTime>
+    </File>
+    <File Include="Views/Store/access_demo.cshtml">
+      <publishTime>05/20/2016 02:24:31</publishTime>
+    </File>
+    <File Include="Views/Store/AddressManage.cshtml">
+      <publishTime>06/02/2016 01:06:14</publishTime>
     </File>
     <File Include="Views/Store/Cart.cshtml">
       <publishTime>05/03/2016 15:50:53</publishTime>
     </File>
     <File Include="Views/Store/Cover.cshtml">
-      <publishTime>04/29/2016 12:04:51</publishTime>
+      <publishTime>05/22/2016 00:32:37</publishTime>
     </File>
     <File Include="Views/Store/Index.cshtml">
-      <publishTime>05/14/2016 23:17:01</publishTime>
+      <publishTime>06/01/2016 18:18:19</publishTime>
     </File>
     <File Include="Views/Store/MyInformation.cshtml">
       <publishTime>05/02/2016 21:51:10</publishTime>
     </File>
+    <File Include="Views/Store/Order.cshtml">
+      <publishTime>06/02/2016 00:33:15</publishTime>
+    </File>
     <File Include="Views/Store/ProductDetail.cshtml">
-      <publishTime>05/04/2016 17:48:36</publishTime>
+      <publishTime>06/02/2016 01:20:16</publishTime>
     </File>
     <File Include="Views/Store/Register.cshtml">
       <publishTime>04/13/2016 00:10:34</publishTime>
+    </File>
+    <File Include="Views/Store/UserCenter.cshtml">
+      <publishTime>06/01/2016 16:38:15</publishTime>
+    </File>
+    <File Include="Views/Store/WxPayConfirm.cshtml">
+      <publishTime>06/01/2016 17:54:30</publishTime>
     </File>
     <File Include="Views/Test/Test.cshtml">
       <publishTime>04/07/2016 21:50:13</publishTime>
@@ -548,13 +599,13 @@
       <publishTime>04/08/2016 00:47:30</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>05/15/2016 12:55:13</publishTime>
+      <publishTime>06/02/2016 01:22:29</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>04/07/2016 21:23:00</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>05/15/2016 12:55:13</publishTime>
+      <publishTime>06/02/2016 01:22:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

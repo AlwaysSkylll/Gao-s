@@ -1,0 +1,184 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/addrPlusCenter.css"/>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/addrPlusCenter.js"></script>
+    <title>订单</title>
+    <style>
+        .addr-list .delete, .addr-list .modify
+        {
+            margin-left:0;
+            float:right;
+        }
+
+    </style>
+</head>
+<body>
+    @*loading遮罩*@
+    <div class="loading"></div>
+    <script>
+        //显示遮罩层
+        //function showLoading() {
+        //    $('.loading').height($(window).height());
+        //    $('.loading').width($(window).width());
+        //    $('.loading').fadeTo(200, 0.5);
+        //};
+        showLoading();
+    </script>
+    @*遮罩层*@
+    <div class="overlay"></div>
+    <!--默认收获地址-->
+    <div class="addr-show">
+        <div>
+            <img src="~/Content/images/plus49.png" />
+            <p>点击添加地址</p>
+        </div>
+       @* <ul>
+            <li>
+                <span class="addrId">1</span>
+                <span>收件人：</span>
+                <span>高勇</span>
+            </li>
+            <li>
+                <span>收货地址：</span>
+                <span>浙江省杭州市江干区东港嘉苑三区10幢一单元</span>
+            </li>
+            <li>
+                <span>联系方式：</span>
+                <span>15726816249</span>
+            </li>
+        </ul>*@
+    </div>
+    <!--订单详情-->
+    <div class="order-detail box-shadow">
+        <div>
+            <span>店铺：音色</span>
+        </div>
+        <hr/>
+        <div class="good-list">
+            <!--产品-->
+            @*
+            <div>
+                <img class="good-pic" src=""></img>
+                <div class="good-name">
+                    <a href="javascript:;"><p>电子吉他</p></a>
+                    <p>精致包装</p>
+                </div>
+                <div class="good-price">
+                    <p><span>$</span>12.80</p>
+                    <p><span>x</span>1</p>
+                </div>
+            </div>*@
+        </div>
+        <hr/>
+        <div class="shipping">
+            <!--运费-->
+            <div class="shippingl">
+                <p>运费</p>
+                <p>由音色商店单独配送</p>
+            </div>
+            <p class="good-price">0.00</p>
+        </div>
+        <hr/>
+        <div>
+            <!--合计-->
+            <div class="count">
+                <p class="shippingl">合计</p>
+                <p class="good-price">99.99</p>
+            </div>
+        </div>
+    </div>
+    <!--提交订单按钮-->
+    <a class="paybtn box-shadow" onclick="ToWxPay()" href="javascript:;">提交订单</a>
+    <a class="cancelbtn box-shadow" onclick="cancel_order()" href="javascript:;">取消订单</a>
+    <!--地址选择弹出层-->
+    <div class="addr-list box-shadow">
+        <div class="header">
+            <p>地址列表</p>
+        </div>
+        <hr />
+        <div>
+            <ul>
+                @*<li>
+                    <span>15726816249</span>&nbsp
+                    <span>高勇</span>
+                    <span>详细地址</span>
+                    <a class="delete" href="javascript:;">删除</a>
+                    <a class="modify" href="javascript:;">修改</a>
+                </li>*@
+            </ul>
+        </div>
+        <div><a class="new-addr-btn" href="javascript:;">新建地址</a></div>
+    </div>
+    @*新建地址弹出层*@
+    <div class="new-addr box-shadow">
+        <div class="form-group">
+            <select class="form-control input" id="s_province" name="s_province"></select>
+        </div>
+        <div class="form-group">
+            <select class="form-control input" id="s_city" name="s_city"></select>
+        </div>
+        <div class="form-group">
+            <select class="form-control input" id="s_county" name="s_county"></select>
+        </div>
+        <div class="form-group">
+            <input class="form-control input" id="s_detail" type="text" placeholder="详细地址"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control input" id="s_name" type="text" placeholder="收件人"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control input" id="s_tel" maxlength="11" type="tel" placeholder="手机号码"/>
+            <a class="confirm-addr box-shadow" onclick="addr_btn(1)">新建地址</a>
+        </div>        
+    </div>
+    <br /><br />
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/area.js"></script>
+    <script type="text/javascript">_init_area();</script>
+    <script>
+        $(document).ready(function () {
+            addr_load(1);
+            $.get("GetCart", function (data) {
+                var cart = eval('(' + data + ')');
+                $('.good-list').html("");
+                for (var i = 0; i < cart.length; i++) {
+                    $('.good-list').append('<div><img class="good-pic" src="' + cart[i].goodImg + '"></img><div class="good-name"><a href="javascript:;"><p>' + cart[i].product + '</p></a><p>精致包装</p></div><div class="good-price"><p>' + cart[i].price + '</p><p><span>x</span>' + cart[i].num + '</p></div></div>');
+                }
+                $('.count>.good-price').html(cart[0].totalPrice.toFixed(2));
+
+                hideLoading();
+            });
+            //地址选择
+            $addr_blank = $('.addr-show');
+            $addr_select = $('.addr-list div ul li span');
+            $('.overlay').on('click', bg_click)
+            $addr_blank.on('click', addr_blank_click);
+            $('.modify').on('click', addr_new_show);
+            $('.new-addr-btn').on('click', addr_new_show);
+        })
+        //订单跳转
+        function ToWxPay() {
+            if ($('.addr-show .addrId').html() == null) {
+                alert("请填写收件地址信息");
+                $('.addr-show').click();
+            }
+            else {
+                $.post("GoToPay", { 'addrid': $('.addr-show .addrId').html() }, function (data) {
+                    window.location.href = "WxPayConfirm";
+                });
+            }
+        }
+
+    </script>
+</body>
+</html>

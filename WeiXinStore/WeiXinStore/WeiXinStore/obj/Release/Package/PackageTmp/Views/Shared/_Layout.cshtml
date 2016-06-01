@@ -28,59 +28,16 @@
 	<ul>
 		<li><a id="index" href="~/Store/Index">商城首页</a></li>
 		<li><a id="about" href="~/Store/About">关于</a></li>
-		<li><a id="contact" href="~/Store/Cover">联系</a></li>
-        <li><a id="usershow" href="javascript:;" >@Session["UserName"]</a></li>
-        <li><span class="button"><button type="button" id="btnquit" class="btn btn-danger navbar-btn">退出</button></span></li>
+		<li>
+            <a id="contact" href="javascript:;">联系</a>
+		</li>
+        <li><a id="usershow" href="~/Store/UserCenter" >@Session["UserName"]</a></li>
+@*        <li><span class="button"><button type="button" id="btnquit" class="btn btn-danger navbar-btn">退出</button></span></li>*@
         <li><span class="button"><button type="button" id="btnregister" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myRegister">注册</button></span></li>
         <li><span class="button"><button type="button" id="btnlogin" class="btn btn-primary navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></span></li>
 	</ul>
 </nav>
-
-@*    <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand">店名</a>
-            <div id="cd-cart-trigger" ><a class="cart" href="#0"><img class="cd-img-replace" src="~/Content/images/cd-cart.svg"/></a></div>
-                
-        </div>
-        <div id="navbar" class="navbar-collapse collapse navbar-right">
-            <ul class="nav navbar-nav ">
-                <li class="action"><a href="Index">商城</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热销<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#吉他">吉他</a></li>
-                        <li><a href="#电吉他">电吉他</a></li>
-                        <li><a href="#乌克丽丽">乌克丽丽</a></li>
-                        <li role="separator" class="divider" ><a href="#"></a></li>
-                        <li><a href="#电子琴">电子琴</a></li>
-                        <li><a href="#古筝">古筝</a></li>
-                    </ul>
-                </li>
-                <li class="dorpdown">
-                    <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="http://weibo.com/3147341217/profile" target="_blank">新浪微博</a></li>
-                        <li><a href="https://github.com/AlwaysSkylll/Gao-s/tree/master/WeiXinStore/WeiXinStore" target="_blank">GitHub</a></li>
-                        <li><a href="About">关于我们</a></li>                           
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myRegister">注册</button></li>
-                <li><button type="button" class="btn btn-primary navbar-btn " data-toggle="modal" data-target="#myLogin">登陆</button></li>
-            </ul>   
-        </div>
-    </div>
-</nav>*@
-
-    
+  
 @*购物车*@
 <div id="cd-shadow-layer"></div>
 <div id="cd-cart">
@@ -93,7 +50,7 @@
 		<p>合计 <span>$0</span></p>
 	</div> <!-- cd-cart-total -->
 
-	<a href="javascript:;" class="checkout-btn">下单</a>
+	<a href="javascript:;" id="checkout" class="checkout-btn">结&nbsp账</a>
 		
 </div> <!-- cd-cart -->
 
@@ -178,12 +135,10 @@
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/modernizr.js"></script>
     <script src="~/Scripts/cart.js"></script>
     <script src="~/Scripts/main.js"></script>
     @RenderSection("scripts", required: false)
-
 </body>
 </html>

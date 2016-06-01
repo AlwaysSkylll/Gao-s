@@ -12,5 +12,6 @@ namespace WeiXinStore.Models
         public int num { get; set; }
         public Nullable<double> price { get; set; }
         public Nullable<double> totalPrice { get; set; }
+        public string goodImg { get; set; }
     }
 }

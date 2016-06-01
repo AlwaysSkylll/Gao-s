@@ -25,8 +25,9 @@ namespace WeiXinStore.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<address> address { get; set; }
         public DbSet<instruments> instruments { get; set; }
-        public DbSet<Order> Order { get; set; }
+        public DbSet<order> order { get; set; }
         public DbSet<shopcart> shopcart { get; set; }
         public DbSet<users> users { get; set; }
     }

@@ -1,6 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StoreModelStoreContainer" CdmEntityContainer="StoreEntities">
+    <EntitySetMapping Name="address">
+      <EntityTypeMapping TypeName="StoreModel.address">
+        <MappingFragment StoreEntitySet="address">
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Provin" ColumnName="Provin" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="instruments">
       <EntityTypeMapping TypeName="StoreModel.instruments">
         <MappingFragment StoreEntitySet="instruments">
@@ -19,14 +34,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Order">
-      <EntityTypeMapping TypeName="StoreModel.Order">
-        <MappingFragment StoreEntitySet="Order">
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="StoreModel.order">
+        <MappingFragment StoreEntitySet="order">
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="OrderJson" ColumnName="OrderJson" />
-          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
           <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -53,6 +70,8 @@
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="Sex" ColumnName="Sex" />
           <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+          <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
