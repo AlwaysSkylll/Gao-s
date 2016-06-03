@@ -1,17 +1,15 @@
 ﻿@{
     Layout = null;
 }
-@model WeiXinStore.Models.order
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>支付成功</title>
     <link type="text/css" rel="stylesheet" href="~/Content/styles/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="~/Content/styles/addrPlusCenter.css" />
     <script src="~/Scripts/jquery.min.js"></script>
-    <title>确认交易</title>
     <style>
         body
         {
@@ -38,26 +36,16 @@
             font-size:16px;
             color:#909090;
         }
-        .paybtn
+        .complete
         {
-            background:#45cb2b;
+            background:#0cbf0f;
         }
-        .cancelbtn
-        {
-            background:#ff6a00;
-        }
+
         .content
         {
             color:#000;
             margin-top:25px;
-        }
-        h4
-        {
-            font-size:19px;
-            margin-left:auto;
-            margin-right:auto;
             text-align:center;
-            font-weight:500;
         }
         h1
         {
@@ -73,43 +61,27 @@
             color:#808080;
             padding:0 15px 2px 15px;
         }
-        .content p:nth-of-type(1)::after
+        .content img
         {
-            float:right;
-            content:"音色商城";
-            color:#000;
+            width:200px;
         }
-        .content p:nth-of-type(2)::after
+        .content p
         {
-            float:right;
-            content:"音色商城商品";
-            color:#000;
+            color:#1f1f1f;
+            font-size:26px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <p>确认交易</p>
+        <p>交易详情</p>
         <p>微信安全支付</p>
     </div>
     <div class="content">
-        <h4>音色商城-订单编号<span class="orderid">@Model.OrderId</span></h4>
+        <img src="~/Content/images/wxpay.jpg"/>
+        <p>支付成功</p>
         <h1 class="pay-count">¥@Model.OrderPrice</h1>
-        <hr />
-        <p>收款方</p>
-        <p>商&nbsp 品</p>
-        <hr />
     </div>
-    <a class="paybtn" onclick="successPay()" >立即支付</a>
-    <a href="Index" class="cancelbtn" >取消支付</a>
-    <script>
-        function successPay() {
-            setTimeout(gotopage, 200);
-        }
-        function gotopage() {
-            $.post("SaveOrderId", { "orderid": $('.orderid').html() })
-            window.location.href="PayFinish";
-        }
-    </script>
+        <a href="Index" class="complete paybtn">完成</a>
 </body>
 </html>

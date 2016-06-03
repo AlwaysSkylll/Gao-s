@@ -1,0 +1,259 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/styles/addrPlusCenter.css" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/addrPlusCenter.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>订单管理</title>
+    <style>
+        li.order-status
+        {
+            margin-left:0;
+            display:inline-block;
+            width:23%;
+            text-align:center;
+        }
+        li.order-status a
+        {
+            line-height:28px;
+            width:70%;
+        }
+        .status-active a
+        {
+            display:inline-block;
+           
+            color:#ff6a00;
+            border-bottom:2px solid #ff6a00;
+        }
+        .order-item
+        {
+            padding:5px;
+            font-size:16px;
+            /*border:2px solid #808080;
+            border-radius:5px;*/
+        }
+        .order-good
+        {
+            padding: 5px 0 5px 0;
+            height:70px;
+            margin-left:0;
+        }
+        .order-good img
+        {
+            width:60px;
+            height:60px;
+        }
+        .good-name, .good-price
+        {
+            position:relative;
+            top:8px;
+        }
+        .order-operate
+        {
+            text-align:right;
+            margin-top:5px;
+        }
+        .order-operate a
+        {
+            display:inline-block;
+            padding:0 5px 0 5px;
+            border-radius:4px;
+            margin-right:10px;
+            font-size:15px;
+        }
+        .order-operate .pay,.confirm
+        {
+            background:#ff6a00;
+            color:#fff;
+        }
+        .order-operate .cancel
+        {
+            padding:0 4px 0 4px;
+            border:1px solid #c6c6c6;
+        }
+        .good-price
+        {
+            top:0;
+        }
+        .order-time
+        {
+            color:#808080;
+        }
+        .receiver
+        {
+            padding-right:5px;
+            color:#808080;
+        }
+    </style>
+</head>
+<body>
+     @*loading遮罩*@
+    <div class="loading"></div>
+    <script>
+        showLoading();
+    </script>
+
+     <div class="order-list order-list-fullwidth box-shadow">
+        <div class="header">
+            <p>订单列表</p>
+        </div>
+        <hr />
+        <div>
+            <ul class="all-status">
+                <li class="order-status status-active">
+                    <a href="javascript:;"><span>全部</span></a>
+                </li>
+                <li class="order-status">
+                    <a href="javascript:;"><span>待付款</span></a>
+                </li>
+                <li class="order-status">
+                    <a href="javascript:;"><span>待收货</span></a>
+                </li>
+                <li class="order-status">
+                    <a href="javascript:;"><span>已完成</span></a>
+                </li>
+            </ul>
+            
+            <ul>
+                
+                @*待付款*@
+                @*<li class="order-item">
+                    <div class="order-operate">
+                        <a href="javascript:;" class="cancel">取消订单</a>
+                        <a href="javascript:;" class="pay">付款</a>
+                    </div>
+                </li>*@
+                @*待收货*@
+                @*<li class="order-item">
+                    <div class="order-operate">
+                        <a href="javascript:;" class="confirm pay">确认收货</a>
+                    </div>
+                </li>*@
+                @*已完成*@
+                @*<li class="order-item">
+                    <div class="order-operate">
+                        <a href="javascript:;" class="cancel">删除订单</a>
+                    </div>
+                </li>*@
+            </ul>
+            <br />
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+             var $statusUl = $('.all-status');
+             var $statusA=$('.order-status a');
+             $statusA.each(function () {
+                 $(this).on('click', function () {
+                     var index = $(this).parent().index();
+                     OrderOperate = $('.order-list ul:nth-of-type(2) .order-item');
+                     $statusUl.find("li").removeClass("status-active");
+                     getOrder(index - 1);
+                     $statusUl.find("li").eq(index).addClass("status-active");
+                 })
+             })
+             $statusUl.find("a").eq(0).click();
+             hideLoading();
+        })
+       
+        function getOrder(num) {
+            showLoading();
+            $.post("GetOrders", { "status": num }, function (data) {
+                orders = data;
+                drawOrder(orders);
+            });
+            hideLoading();
+        }
+        //加载订单
+        function drawOrder(orders) {
+            var orderString='';
+            AllOrders = $('.order-list ul:nth-of-type(2)');
+            AllOrders.html("");
+            if (orders != '0') {
+                for (var i = 0; i < orders.length; i++) {
+
+                    orderString =
+                        '<li class="order-item">' +
+                            '<hr />' +
+                            '<p>订单号：<span class="orderid">' + orders[i].OrderId + '</span></p>';
+                    for (var j = 0; j < orders[i].CartItems.length; j++) {
+                        orderString += '<div class="order-good">' +
+                                    '<img class="good-pic" src="' + orders[i].CartItems[j].goodImg + '"></img>' +
+                                    '<div class="good-name">' +
+                                        '<a href="javascript:;"><p>' + orders[i].CartItems[j].product + '</p></a>' +
+                                       ' <p>精致包装</p>' +
+                                    '</div>' +
+                                   ' <div class="good-price">' +
+                                       ' <p>' + orders[i].CartItems[j].price + '</p>' +
+                                       ' <p><span>x</span>' + orders[i].CartItems[j].num + '</p>' +
+                                   ' </div>' +
+                                '</div>';
+                    }
+                    orderString += '<div class="count">' +
+                                '<p class="shippingl">合计</p>' +
+                                '<p class="good-price">' + orders[i].OrderPrice.toFixed(2) + '</p>' +
+                            '</div>' +
+                            '<div class="receiver">' +
+                                '<p>' + orders[i].AddressDetail + '</p>' +
+                                '<p><span>' + orders[i].Name + '</span><span>' + orders[i].Phone + '</span></p>' +
+                            '</div>' +
+                            '<p class="order-time">'+orders[i].CreateTime+'</p>';
+                    if (orders[i].OrderStatus == 0) {
+
+                        orderString += '<div class="order-operate">' +
+                            '<a href="javascript:;" class="cancel">取消订单</a>' +
+                            '<a href="javascript:;" class="pay">付款</a>' +
+                        '</div>' +
+                        '</li>';
+                    }
+                    else if (orders[i].OrderStatus == 1) {
+                        orderString += '<div class="order-operate">' +
+                           '<a href="javascript:;" class="confirm">确认收货</a>' +
+                       '</div>' +
+                        '</li>';
+                    }
+                    else if (orders[i].OrderStatus == 2) {
+                        orderString += ' <div class="order-operate">' +
+                            '<a href="javascript:;" class="cancel">删除订单</a>' +
+                        '</div>' +
+                        '</li>';
+                    }
+                    AllOrders.append(orderString);
+                   
+                }
+            }
+            //请求订单信息
+            $('.pay').each(function () {
+                $(this).on('click', function () {
+                    $.post("SaveOrderId", { "orderid": $(this).parent().parent().find(".orderid").html() }, function () { });
+                    window.location.href = "WxPayConfirm";
+                    //alert($(this).parent().parent().find(".orderid").html());
+                })
+            });
+            $('.confirm').each(function () {
+                $(this).on('click', function () {
+                    $.post("ReceiveConfirm", { "orderid": $(this).parent().parent().find(".orderid").html() }, function () { });
+                    $(".status-active a").click();
+                    //alert($(this).parent().parent().find(".orderid").html());
+                })
+            });
+            $('.cancel').each(function () {
+                $(this).on('click', function () {
+                    $.post("DeleteOrder", { "orderid": $(this).parent().parent().find(".orderid").html() }, function () { });
+                    $(".status-active a").click();
+                    //alert($(this).parent().parent().find(".orderid").html());
+                })
+            });
+        }
+   </script>
+</body>
+</html>

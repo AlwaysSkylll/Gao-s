@@ -165,6 +165,7 @@
     <Compile Include="Models\order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\orderManage.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\shopcart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -181,12 +182,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\wxpay.jpg" />
     <Content Include="Content\images\clipboard_attachment.png" />
     <Content Include="Content\images\location.png" />
     <Content Include="Content\images\map.png" />
     <Content Include="Content\images\plus49.png" />
     <Content Include="Content\images\wallpaper.jpg" />
     <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\orderempty.png" />
     <Content Include="Content\product\PACIFICA012.jpg" />
     <Content Include="Content\images\cd-icon-arrow.svg" />
     <Content Include="Content\images\logo.gif" />
@@ -342,6 +345,8 @@
     <Content Include="Views\Store\Order.cshtml" />
     <Content Include="Views\Store\WxPayConfirm.cshtml" />
     <Content Include="Views\Store\AddressManage.cshtml" />
+    <Content Include="Views\Store\OrderManage.cshtml" />
+    <Content Include="Views\Store\PayFinish.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <link type="text/css" rel="stylesheet" href="~/Content/styles/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="~/Content/styles/addrPlusCenter.css" />
+    <script src="~/Scripts/jquery.min.js"></script>
     <title>确认交易</title>
     <style>
         body
@@ -40,6 +41,10 @@
         .paybtn
         {
             background:#45cb2b;
+        }
+        .cancelbtn
+        {
+            background:#ff6a00;
         }
         .content
         {
@@ -88,13 +93,23 @@
         <p>微信安全支付</p>
     </div>
     <div class="content">
-        <h4>音色商城-订单编号<span>@Model.OrderId</span></h4>
+        <h4>音色商城-订单编号<span class="orderid">@Model.OrderId</span></h4>
         <h1 class="pay-count">¥@Model.OrderPrice</h1>
         <hr />
         <p>收款方</p>
         <p>商&nbsp 品</p>
         <hr />
     </div>
-    <a class="paybtn" >立即支付</a>
+    <a class="paybtn" onclick="successPay()" >立即支付</a>
+    <a href="Index" class="cancelbtn" >取消支付</a>
+    <script>
+        function successPay() {
+            setTimeout(gotopage, 200);
+        }
+        function gotopage() {
+            $.post("SaveOrderId", { "orderid": $('.orderid').html() })
+            window.location.href="PayFinish";
+        }
+    </script>
 </body>
 </html>

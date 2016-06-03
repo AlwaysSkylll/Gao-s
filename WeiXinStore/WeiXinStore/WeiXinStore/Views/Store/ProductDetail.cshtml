@@ -1,13 +1,21 @@
 ﻿@model WeiXinStore.Models.ProductListViewModel
 @{
-    ViewBag.Title = "ProductDetail";
+    ViewBag.Title = "商品详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
- @*loading遮罩*@
+  @*loading遮罩*@
 <div class="loading"></div>
 <script>
+    //显示loading遮罩层
+    function showLoading() {
+        $('.loading').height($(window).height());
+        $('.loading').width($(window).width());
+        $('.loading').fadeTo(200, 0.5);
+    };
+    //隐藏loading遮罩层
+    function hideLoading() {
+        $('.loading').fadeOut();
+    }
     showLoading();
 </script>
 <div class="container">

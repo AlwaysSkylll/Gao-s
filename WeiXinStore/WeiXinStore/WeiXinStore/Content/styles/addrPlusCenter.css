@@ -138,7 +138,7 @@ hr{
     text-align: center;
     margin: 20px auto 0 auto;
 }
-.addr-list ,.new-addr{
+.addr-list ,.new-addr,.order-list{
     width: 90%;
     height: auto;
     position: fixed;
@@ -158,6 +158,10 @@ hr{
 {
     line-height: 25px;
     margin-left:5px;
+}
+.addr-list ul:nth-child(1) li
+{
+    margin-left:0;
 }
 .addr-list .delete,.addr-list .modify
 {
@@ -214,7 +218,7 @@ hr{
 {
     padding:5px 10px 5px 10px;
 }
-.addr-list-fullwidth
+.addr-list-fullwidth,.order-list-fullwidth
 {
     display: block;
     position:relative;

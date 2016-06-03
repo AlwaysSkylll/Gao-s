@@ -51,7 +51,7 @@ namespace WeiXinStore.Controllers
                 int mark = 0;
                 DateTime dt;
                 DateTime dt2 = System.DateTime.Now;
-                dt = DateTime.Parse(Convert.ToDateTime(dt2).ToString("yyyy-MM-dd HH:mm:ss.fff"));
+                dt = DateTime.Parse(Convert.ToDateTime(dt2).ToString("yyyy-MM-dd HH:mm:ss"));
                 url = "https://api.weixin.qq.com/sns/userinfo?access_token=" + token + "&openid=" + openid + "&lang=zh_CN ";
                 request = (HttpWebRequest)WebRequest.Create(url);
                 response = (HttpWebResponse)request.GetResponse();
@@ -211,7 +211,7 @@ namespace WeiXinStore.Controllers
             shopcart cart = new shopcart();
             instruments instru = new instruments();
             int itemId = int.Parse(Request.Form["cartItemId"]);
-            dt = DateTime.Parse(Convert.ToDateTime(dt2).ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            dt = DateTime.Parse(Convert.ToDateTime(dt2).ToString("yyyy-MM-dd HH:mm:ss"));
             Cartjson cj = new Cartjson();
             cj.id=itemId;
             cj.num=1;
@@ -311,9 +311,7 @@ namespace WeiXinStore.Controllers
                     if (cart.CountNum == 0)
                     { 
                         cart.CountPrice = 0;
-                        cart.CartJson = null;
                     }
-                    else
                     cart.CartJson = new JavaScriptSerializer().Serialize(cjlist);
                     Response.Write(cart.CountPrice+"|"+cart.CountNum);
                     st.SaveChanges();
@@ -345,7 +343,6 @@ namespace WeiXinStore.Controllers
         public JsonResult GetAddress() {
             StoreEntities st = new StoreEntities();
             List<address> addrs = new List<address>();
-            address addr = new address();
             foreach (address address in st.address)
             {
                 if ((int)Session["UserId"] == address.UserId)
@@ -357,38 +354,58 @@ namespace WeiXinStore.Controllers
         public ActionResult AddressManage() {
             return View("");
         }
-        //传递地址到订单页面
+        //传递地址到支付页面
         public void GoToPay() {
             int addrid = int.Parse(Request.Form["addrid"]);
             Session["addrid"] = addrid;
         }
+        //保存订单id
+        public void SaveOrderId() {
+            int orderid = int.Parse(Request.Form["orderid"]);
+            Session["orderid"] = orderid;
+            //Response.Write(Session["orderid"]);
+        }
         //确认支付
         public ActionResult WxPayConfirm() {
             int userid=(int)Session["UserId"];
+            int orderid = 0;
+            int addrId=0;
+            if (Session["orderid"]!=null)
+                orderid=(int)Session["orderid"];
+            if (Session["addrid"]!=null)
+                addrId = (int)Session["addrid"];
             StoreEntities st = new StoreEntities();
             shopcart cart = new shopcart();
             users user = new users();
             order ord = new order();
-            int addrId = (int)Session["addrid"];
-            DateTime dt2 = System.DateTime.Now;       
-            user = st.users.Find(userid);
-            cart = st.shopcart.Find(user.CartId);
-            if (user.CartId == null)
+            if (orderid == 0)
             {
-                return View("Index");
+                DateTime dt2 = System.DateTime.Now;
+                user = st.users.Find(userid);
+                cart = st.shopcart.Find(user.CartId);
+                if (user.CartId == null)
+                {
+                    return View("Index");
+                }
+                else
+                {
+                    ord.OrderId = DateTime.Now.Year * (new Random().Next(99)) + (new Random().Next(31)) * DateTime.Now.Month + (new Random().Next(61)) * DateTime.Now.Day * DateTime.Now.Millisecond;
+                    ord.OrderPrice = cart.CountPrice;
+                    ord.OrderStatus = 0;
+                    ord.CartId = cart.CartId;
+                    ord.UserId = cart.UserId;
+                    ord.AddressId = addrId;
+                    ord.CreateTime = DateTime.Parse(Convert.ToDateTime(dt2).ToString("yyyy-MM-dd HH:mm:ss"));
+                    user.CartId = null;
+                    st.order.Add(ord);
+                    st.SaveChanges();
+                    Session["addrid"] = null;
+                    return View("", ord);
+                }
             }
-            else 
-            { 
-                ord.OrderId = DateTime.Now.Year * (new Random().Next(99)) + (new Random().Next(31)) * DateTime.Now.Month + (new Random().Next(61)) * DateTime.Now.Day * DateTime.Now.Millisecond;
-                ord.OrderPrice = cart.CountPrice;
-                ord.OrderStatus = 0;
-                ord.CartId = cart.CartId;
-                ord.UserId = cart.UserId;
-                ord.AddressId = addrId;
-                ord.CreateTime=DateTime.Parse(Convert.ToDateTime(dt2).ToString("yyyy-MM-dd HH:mm:ss.fff"));
-                user.CartId = null;
-                st.order.Add(ord);
-                st.SaveChanges();
+            else {
+                ord = st.order.Find(orderid);
+                Session["orderid"]=null;
                 return View("", ord);
             }
         }
@@ -402,6 +419,128 @@ namespace WeiXinStore.Controllers
             st.address.Remove(addr);
             st.SaveChanges();
             Response.Write(addrId);
+        }
+        public ActionResult OrderManage()
+        {
+            return View("");
+        }
+        //获得订单
+        public JsonResult GetOrders() {
+            int reqStatus = int.Parse(Request.Form["status"]);
+            int userId = (int)Session["UserId"];
+            StoreEntities st = new StoreEntities();
+            List<orderManage> ords = new List<orderManage>();
+            int flag = 0;
+            if (reqStatus == -1)
+            {
+                foreach (order od in st.order)
+                {
+                    if ((od.UserId == userId) && (od.OrderStatus != -1))
+                    {
+                        orderManage ord = new orderManage();
+                        List<CartItem> cilist = new List<CartItem>();
+                        instruments instru = new instruments();
+                        string cartJson = "";
+                        flag++;
+                        ord.OrderId = od.OrderId;
+                        ord.OrderPrice = od.OrderPrice;
+                        ord.CreateTime = od.CreateTime.ToString();
+                        ord.AddressDetail = st.address.Find(od.AddressId).Detail;
+                        ord.Name = st.address.Find(od.AddressId).Name;
+                        ord.OrderStatus = od.OrderStatus;
+                        ord.Phone = st.address.Find(od.AddressId).Phone;
+                        cartJson = st.shopcart.Find(od.CartId).CartJson;
+                        List<Cartjson> cjList = new JavaScriptSerializer().Deserialize<List<Cartjson>>(cartJson);
+                        foreach (Cartjson jj in cjList)
+                        {
+                            //获取购物车内所有商品对象并加入到JSON字符串中
+                            CartItem ci = new CartItem();
+                            instru = st.instruments.Find(jj.id);
+                            ci.product = instru.InstrumentName;
+                            ci.productId = instru.InstrumentId;
+                            ci.num = jj.num;
+                            ci.price = instru.Instrumentprice;
+                            ci.goodImg = instru.ProductImg;
+                            cilist.Add(ci);
+                        }
+                        ord.CartItems = cilist;
+                        ords.Add(ord);
+                    }
+                }
+            }
+            else
+            {
+                foreach (order od in st.order)
+                {
+                    if ((od.UserId == userId) && (od.OrderStatus == reqStatus))
+                    {
+                        orderManage ord = new orderManage();
+                        List<CartItem> cilist = new List<CartItem>();
+                        instruments instru = new instruments();
+                        string cartJson = "";
+                        flag++;
+                        ord.OrderId = od.OrderId;
+                        ord.OrderPrice = od.OrderPrice;
+                        ord.CreateTime = od.CreateTime.ToString();
+                        ord.AddressDetail = st.address.Find(od.AddressId).Detail;
+                        ord.Name = st.address.Find(od.AddressId).Name;
+                        ord.OrderStatus = od.OrderStatus;
+                        ord.Phone = st.address.Find(od.AddressId).Phone;
+                        cartJson = st.shopcart.Find(od.CartId).CartJson;
+                        List<Cartjson> cjList = new JavaScriptSerializer().Deserialize<List<Cartjson>>(cartJson);
+                        foreach (Cartjson jj in cjList)
+                        {
+                            //获取购物车内所有商品对象并加入到JSON字符串中
+                            CartItem ci = new CartItem();
+                            instru = st.instruments.Find(jj.id);
+                            ci.product = instru.InstrumentName;
+                            ci.productId = instru.InstrumentId;
+                            ci.num = jj.num;
+                            ci.price = instru.Instrumentprice;
+                            ci.goodImg = instru.ProductImg;
+                            cilist.Add(ci);
+                        }
+                        ord.CartItems = cilist;
+                        ords.Add(ord);
+                    }
+                }
+            }
+            if (flag == 0)
+                return Json("0");
+            else
+                return Json(ords);
+        }
+        //确认收货信息提交
+        public void ReceiveConfirm()
+        {
+            int orderid = int.Parse(Request.Form["orderid"]);
+            StoreEntities st = new StoreEntities();
+            order order = new order();
+            order = st.order.Find(orderid);
+            order.OrderStatus=2;
+            st.SaveChanges();
+            //Response.Write(Session["orderid"]);
+        }
+        //删除订单
+        public void DeleteOrder()
+        {
+            int orderid = int.Parse(Request.Form["orderid"]);
+            StoreEntities st = new StoreEntities();
+            order order = new order();
+            order = st.order.Find(orderid);
+            order.OrderStatus = -1;
+            st.SaveChanges();
+            //Response.Write(Session["orderid"]);
+        }
+        //成功支付
+        public ActionResult PayFinish() {
+            int orderid = (int)Session["orderid"];
+            StoreEntities st=new StoreEntities();
+            order order = new order();
+            order = st.order.Find(orderid);
+            order.OrderStatus = 1;
+            st.SaveChanges();
+            return View("",order);
         }
     }
 }
